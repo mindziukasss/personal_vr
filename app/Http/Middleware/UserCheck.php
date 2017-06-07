@@ -15,12 +15,11 @@ class UserCheck
      */
     public function handle($request, Closure $next)
     {
-//        dd(auth()->user()->role->pluck('id')->toArray()); check data
-        if (in_array('super-admin', auth()->user()->role->pluck('id')->toArray())) {
+       // dd(auth()->user()->role->pluck('id')->toArray());// check data
+        if (in_array('super-admin', auth()->user()->role->pluck('id')->toArray()))
+         {
             return $next($request);
-        } else {
-            abort(403, 'Access denied');
         }
-        return $next($request);
+    
     }
 }
