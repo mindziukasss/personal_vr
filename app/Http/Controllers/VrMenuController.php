@@ -1,26 +1,38 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use App\Models\VROrders;
-use Illuminate\Routing\Controller;
+namespace App\Http\Controllers;
 
-class VROrdersController extends Controller
+use App\Models\VrMenuTranslations;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\VrMenu;
+use Illuminate\Support\Facades\DB;
+use Session;
+
+
+class VrMenuController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     * GET /vrorders
-     *
-     * @return Response
-     */
-    public function adminIndex()
+    public function frontendIndex()
     {
-       //
+        //
     }
 
 
     /**
+     * Display a listing of the resource.
+     * GET /vrmenu
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
      * Show the form for creating a new resource.
-     * GET /vrorders/create
+     * GET /vrmenu/create
      *
      * @return Response
      */
@@ -31,18 +43,21 @@ class VROrdersController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * POST /vrorders
+     * POST /vrmenu
      *
      * @return Response
      */
-    public function store()
+
+
+    public function store(Request $request)
     {
-        //
+       //
+
     }
 
     /**
      * Display the specified resource.
-     * GET /vrorders/{id}
+     * GET /vrmenu/{id}
      *
      * @param  int $id
      * @return Response
@@ -54,7 +69,7 @@ class VROrdersController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * GET /vrorders/{id}/edit
+     * GET /vrmenu/{id}/edit
      *
      * @param  int $id
      * @return Response
@@ -66,26 +81,28 @@ class VROrdersController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * PUT /vrorders/{id}
+     * PUT /vrmenu/{id}
      *
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+
+//
     }
 
     /**
      * Remove the specified resource from storage.
-     * DELETE /vrorders/{id}
+     * DELETE /vrmenu/{id}
      *
      * @param  int $id
      * @return Response
      */
     public function destroy($id)
     {
-        //
+
+     //
     }
 
 }

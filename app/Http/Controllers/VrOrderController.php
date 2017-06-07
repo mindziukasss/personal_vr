@@ -1,95 +1,98 @@
 <?php namespace App\Http\Controllers;
 
-use App\Models\VrCategories;
+use App\Models\VrOrder;
+use App\Models\VrPages;
+use App\Models\VrReservations;
+use Carbon\Carbon;
+use DateTimeZone;
 use Illuminate\Routing\Controller;
-use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Input;
 
-class VrCategoriesController extends Controller {
-
-
-
+class VrOrderController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /vrcategories
+	 * GET /vrorder
 	 *
 	 * @return Response
-     *
 	 */
 	public function index()
 	{
-
         //
 	}
 
+
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /vrcategories/create
+	 * GET /vrorder/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return view ('admin.categories.createCategory');
+
+		//
+
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /vrcategories
+	 * POST /vrorder
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-	    //
-	}
+        //
+
+    }
 
 	/**
 	 * Display the specified resource.
-	 * GET /vrcategories/{id}
+	 * GET /vrorder/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-        //
+       //
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /vrcategories/{id}/edit
+	 * GET /vrorder/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /vrcategories/{id}
+	 * PUT /vrorder/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /vrcategories/{id}
+	 * DELETE /vrorder/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-        //
+		//
 	}
 
 }

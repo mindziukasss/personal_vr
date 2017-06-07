@@ -1,29 +1,13 @@
 <?php namespace App\Http\Controllers;
 
-use App\Models\VrResources;
-use Carbon\Carbon;
-use Illuminate\Http\UploadedFile;
+use App\Models\VrMenuTranslations;
 use Illuminate\Routing\Controller;
 
-class VrResourcesController extends Controller {
+class VrMenuTranslationsController extends Controller {
 
-    public function upload(UploadedFile $resource)
-    {
-        $data =
-            [
-                "size" => $resource->getsize(),
-                "mime_type" => $resource->getMimetype(),
-            ];
-        $path = 'upload/' . date("Y/m/d/");
-        $fileName = Carbon::now()->timestamp . '-' . $resource->getClientOriginalName();
-        $resource->move(public_path($path), $fileName);
-        $data["path"] = $path . $fileName;
-        $record = VrResources::create($data);
-        return $record->id;
-    }
 	/**
 	 * Display a listing of the resource.
-	 * GET /vrresources
+	 * GET /vrmenutranslations
 	 *
 	 * @return Response
 	 */
@@ -34,7 +18,7 @@ class VrResourcesController extends Controller {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /vrresources/create
+	 * GET /vrmenutranslations/create
 	 *
 	 * @return Response
 	 */
@@ -45,18 +29,18 @@ class VrResourcesController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /vrresources
+	 * POST /vrmenutranslations
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function storeFromVrMenuController($data, $record)
 	{
-		//
+        //
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /vrresources/{id}
+	 * GET /vrmenutranslations/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -68,7 +52,7 @@ class VrResourcesController extends Controller {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /vrresources/{id}/edit
+	 * GET /vrmenutranslations/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -80,19 +64,32 @@ class VrResourcesController extends Controller {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /vrresources/{id}
+	 * PUT /vrmenutranslations/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function updateFromVrMenuController($data, $id)
 	{
-		//
+
+        if(isset($data['name_lt'])) {
+            VrMenuTranslations::where('menu_id', '=', $id)
+                ->where('language_code', '=', 'lt')->update([
+                    'name' => $data['name_lt']
+                ]);
+        }
+
+        if(isset($data['name_en'])) {
+            VrMenuTranslations::where('menu_id', '=', $id)
+                ->where('language_code', '=', 'en')->update([
+                    'name' => $data['name_en']
+                ]);
+        }
 	}
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /vrresources/{id}
+	 * DELETE /vrmenutranslations/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

@@ -1,97 +1,104 @@
 <?php namespace App\Http\Controllers;
 
-use App\Models\VRCategories;
-use App\Models\VRLanguages;
-use App\Models\VRPages;
-use App\Models\VRPagesTranslations;
-use App\Models\VRResources;
+use App\Models\VrCategories;
+use App\Models\VrCategoriesTranslations;
+use App\Models\VrPages;
+use App\Models\VrPagesTranslations;
+use App\Models\VrResources;
 use Illuminate\Routing\Controller;
 
-class VRPagesController extends Controller
-{
+class VrPagesController extends Controller {
 
-    /**
-     * Display a listing of the resource.
-     * GET /vrpages
-     *
-     * @return Response
-     */
-    public function adminIndex()
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 * GET /vrpages
+	 *
+	 * @return Response
+	 */
 
-    /**
-     * Show the form for creating a new resource.
-     * GET /vrpages/create
-     *
-     * @return Response
-     */
-    public function adminCreate()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * POST /vrpages
-     *
-     * @return Response
-     */
-    public function adminStore()
-    {
+	public function index()
+	{
        //
-    }
+	}
 
-    /**
-     * Display the specified resource.
-     * GET /vrpages/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminShow($id)
+	public function indexFrontEnd()
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * GET /vrpages/{id}/edit
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminEdit($id)
+    public function indexFrontEndEn()
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     * PUT /vrpages/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminUpdate($id)
-    {
+	/**
+	 * Show the form for creating a new resource.
+	 * GET /vrpages/create
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		//
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 * POST /vrpages
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * DELETE /vrpages/{id}
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function adminDestroy($id)
-    {
+	/**
+	 * Display the specified resource.
+	 * GET /vrpages/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
         //
-    }
+	}
 
+	/**
+	 * Show the form for editing the specified resource.
+	 * GET /vrpages/{id}/edit
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+        //
+	}
 
+	/**
+	 * Update the specified resource in storage.
+	 * PUT /vrpages/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+	    //
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 * DELETE /vrpages/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+        //
+	}
 
 }
-

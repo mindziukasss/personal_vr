@@ -1,95 +1,99 @@
 <?php namespace App\Http\Controllers;
 
-use App\Models\VrCategories;
+use App\Models\VrPagesTranslations;
 use Illuminate\Routing\Controller;
-use Ramsey\Uuid\Uuid;
 
-class VrCategoriesController extends Controller {
-
-
-
+class VrPagesTranslationsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /vrcategories
+	 * GET /vrpagestranslations
 	 *
 	 * @return Response
-     *
 	 */
 	public function index()
 	{
-
-        //
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /vrcategories/create
+	 * GET /vrpagestranslations/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return view ('admin.categories.createCategory');
+		//
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /vrcategories
+	 * POST /vrpagestranslations
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-	    //
+		//
 	}
+
+    public function storeFromVrPagesController($data, $article)
+    {
+        //
+     }
 
 	/**
 	 * Display the specified resource.
-	 * GET /vrcategories/{id}
+	 * GET /vrpagestranslations/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /vrcategories/{id}/edit
+	 * GET /vrpagestranslations/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /vrcategories/{id}
+	 * PUT /vrpagestranslations/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-        //
+		//
 	}
 
+	public function updateFromVrPagesController($data, $id)
+    {
+
+       //
+    }
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /vrcategories/{id}
+	 * DELETE /vrpagestranslations/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-        //
+		//
 	}
 
 }

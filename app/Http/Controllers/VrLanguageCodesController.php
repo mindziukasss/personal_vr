@@ -1,95 +1,88 @@
 <?php namespace App\Http\Controllers;
 
-use App\Models\VrCategories;
 use Illuminate\Routing\Controller;
-use Ramsey\Uuid\Uuid;
 
-class VrCategoriesController extends Controller {
-
-
-
+class VrLanguageCodesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /vrcategories
+	 * GET /vrlanguagecodes
 	 *
 	 * @return Response
-     *
 	 */
 	public function index()
 	{
-
-        //
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /vrcategories/create
+	 * GET /vrlanguagecodes/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return view ('admin.categories.createCategory');
+		//
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /vrcategories
+	 * POST /vrlanguagecodes
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-	    //
+		//
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /vrcategories/{id}
+	 * GET /vrlanguagecodes/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /vrcategories/{id}/edit
+	 * GET /vrlanguagecodes/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /vrcategories/{id}
+	 * PUT /vrlanguagecodes/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-        //
+		//
 	}
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /vrcategories/{id}
+	 * DELETE /vrlanguagecodes/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-        //
+		//
 	}
 
 }
