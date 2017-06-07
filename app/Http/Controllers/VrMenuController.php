@@ -13,12 +13,6 @@ use Session;
 class VrMenuController extends Controller
 {
 
-    public function frontendIndex()
-    {
-        //
-    }
-
-
     /**
      * Display a listing of the resource.
      * GET /vrmenu
@@ -27,7 +21,7 @@ class VrMenuController extends Controller
      */
     public function index()
     {
-        //
+        return VrMenu::get()->toArray();
     }
 
     /**
