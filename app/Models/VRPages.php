@@ -3,29 +3,21 @@
 namespace App\Models;
 
 
-class VRPages extends CoreModel
+
+class VrPages extends CoreModel
 {
+    use UuidTrait;
+
     /**
-     * Table name
+     * Database table name
      * @var string
      */
     protected $table = 'vr_pages';
-
     /**
-     * Fields which will be manipulated
+     * Fillable column names
      * @var array
      */
-    protected $fillable = ['id', 'category_id', 'resource_id'];
-
-
-    public function translationsData()
-    {
-        $languageCode = request()->segment(5);
-        return $this->hasOne(VRPagesTranslations::class, 'page_id', 'id')->where('language_id', $languageCode);
-
-    }
-
+    protected $fillable = ['id', 'category_id', 'cover_id'];
 
 
 }
-
