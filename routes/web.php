@@ -17,6 +17,9 @@
 //Route::group(['prefix' => '{lang?}'], function () {
 //    Route::get('/frontend', ['as' => 'app.frontEnd.index', 'uses' => 'FrontEndController@index']);
 //});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('welcome');

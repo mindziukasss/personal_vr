@@ -65,15 +65,15 @@ return [
     */
 
     'providers' => [
-      //  'users' => [
-       //     'driver' => 'eloquent',
-         //   'model' => App\Models\VRUsers::class,
-      //  ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\VrUsers::class,
+        ],
 
-         'users' => [
-             'driver' => 'eloquent',
-             'model' => App\Models\VRUsers::class,
-         ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*
