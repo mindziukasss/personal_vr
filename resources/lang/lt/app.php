@@ -5,5 +5,6 @@ return [
     'pages' => 'Puslapiai',
     'categories' => 'Kategorijos',
     'users' => 'Vartotojai',
-    'orders' => 'Užsakymai'
+    'orders' => 'Užsakymai',
+    'admin_panel' => 'Administratoriaus meniu'
 ];
