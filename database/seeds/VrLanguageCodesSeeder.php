@@ -16,6 +16,9 @@ class VrLanguageCodesSeeder extends Seeder
             ["id" => "en", "language_code" => "en", "name" => "English"],
             ["id" => "lt", "language_code" => "lt", "name" => "Lietuvių"],
             ["id" => "ru", "language_code" => "ru", "name" => "Русский"],
+            ["id" => "de", "language_code" => "de", "name" => "Deutsch"],
+            ["id" => "fr", "language_code" => "fr", "name" => "Français"],
+
 
 
 
