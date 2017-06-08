@@ -13,6 +13,7 @@ class VrLanguageCodesController extends Controller {
 	 */
 	public function index()
 	{
+		$config['tableName'] = trans('app.adminLanguagesTable');
 	    $config['list'] = VrLanguageCodes::get()->toArray();
 	    $config['callToAction']= 'app.languages.edit';
 		return view('admin.list',$config);

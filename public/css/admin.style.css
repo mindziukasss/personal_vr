@@ -1,6 +1,7 @@
 html, body {
     width: 100%;
     height: 100%;
+    background-color: #ffeecc;
 }
 #menu {
     background-color: #222D32;
@@ -22,13 +23,14 @@ html, body {
 }
 
 h3 {
-    color: white;
+    padding: 15px;
+    color: #b8c7ce;
 }
 
-th, td {
-    border: solid 1px;
-    padding: 5px;
+li {
+    color: #b8c7ce;
 }
+
 
 
 

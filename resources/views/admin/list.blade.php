@@ -3,7 +3,8 @@
     <div class="container">
         <div id="list">
             @if(sizeof($list)>0)
-                <table class="table table-hover">
+                <h2>{{$tableName}}</h2>
+                <table class="table table-condensed">
                     <tr>
                         @foreach($list[0] as $key => $value)
                             <th>{{$key}}</th>
