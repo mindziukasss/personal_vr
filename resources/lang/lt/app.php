@@ -8,4 +8,7 @@ return [
     'orders' => 'Užsakymai',
     'admin_panel' => 'Administratoriaus meniu',
     'no_data' => 'Duomenų nėra',
+    'disable' => 'Išjungti',
+    'active' => 'Įjungti'
+
 ];
