@@ -1,6 +1,13 @@
-<a href='{!! url('/admin/menu'); !!}'>Menu</a>
-<a href='{!! url('/admin/pages'); !!}'>Pages</a>
-<a href='{!! url('/admin/categories'); !!}'>Categories</a>
-<a href='{!! url('/admin/users'); !!}'>Users</a>
-<a href='{!! url('/admin/orders'); !!}'>Orders</a>
+<div>
+    <ul>
+        <li><a href="{{ route('app.languages.index') }}">{{ trans('app.language') }}</a></li>
+        <li><a href="{{ route('app.menu.index') }}">{{ trans('app.menu') }}</a></li>
+        <li><a href="{{ route('app.pages.index') }}">{{ trans('app.pages') }}</a></li>
+        <li><a href="{{ route('app.categories.index') }}">{{ trans('app.categories') }}</a></li>
+        <li><a href="{{ route('app.users.index') }}">{{ trans('app.users') }}</a></li>
+        <li><a href="{{ route('app.orders.index') }}">{{ trans('app.orders') }}</a></li>
+    </ul>
+</div>
+
+
 

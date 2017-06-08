@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], function () {
     Route::get('/', function () {   
-    return view('admin.nav');
+    return view('admin.list');
     });
 
     Route::group(['prefix' => 'menu'], function () {
@@ -37,6 +37,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
             Route::post('/edit', ['uses' => 'VrMenuController@update']);
             Route::delete('/delete', ['as' => 'app.menu.destroy', 'uses' => 'VrMenuController@destroy']);
         });
+
+    });
+
+    Route::group(['prefix' => 'languages'], function () {
+
+        Route::get('/', ['as' => 'app.languages.index', 'uses' => 'VrLanguageCodesController@index']);
 
     });
 
