@@ -6,5 +6,6 @@ return [
     'categories' => 'Kategorijos',
     'users' => 'Vartotojai',
     'orders' => 'Užsakymai',
-    'admin_panel' => 'Administratoriaus meniu'
+    'admin_panel' => 'Administratoriaus meniu',
+    'no_data' => 'Duomenų nėra',
 ];
