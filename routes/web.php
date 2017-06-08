@@ -44,6 +44,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
 
         Route::get('/', ['as' => 'app.languages.index', 'uses' => 'VrLanguageCodesController@index']);
 
+        Route::group(['prefix' => '{id}'], function () {
+            Route::get('/edit', ['as' => 'app.languages.edit', 'uses' => 'VrLanguageCodesController@edit']);
+            Route::post('/edit', ['uses' => 'VrLanguageCodesController@update']);
+
+        });
+
+
     });
 
     Route::group(['prefix' => 'orders'], function () {

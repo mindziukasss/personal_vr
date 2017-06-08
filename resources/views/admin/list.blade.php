@@ -15,14 +15,18 @@
                                 @if($key == 'is_active')
                                     <td>
                                         @if($value == 1)
-                                            <button type="button"
+                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 0}} )"
+                                                    type="button"
                                                     class="btn btn-primary">{{ trans('app.disable') }}</button>
-                                            <button type="button" style="display: none"
+                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 1}} )"
+                                                    type="button" style="display: none"
                                                     class="btn btn-success">{{ trans('app.active') }}</button>
                                         @else
-                                            <button type="button"
+                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 1}} )"
+                                                    type="button"
                                                     class="btn btn-success">{{ trans('app.active') }}</button>
-                                            <button type="button" style="display: none"
+                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 0}} )"
+                                                    type="button" style="display: none"
                                                     class="btn btn-primary">{{ trans('app.disable') }}</button>
                                         @endif
                                     </td>
@@ -38,4 +42,14 @@
             @endif
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function enableaDisbaleLanguage(url, value) {
+
+        }
+
+
+    </script>
 @endsection
