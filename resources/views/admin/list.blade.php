@@ -63,9 +63,6 @@
                 success: function (response) {
                     console.log(response);
 //                    $('#' + response.id).remove();
-                },
-                error: function () {
-                    alert('ERROR')
                 }
             });
 
