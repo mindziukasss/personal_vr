@@ -16,17 +16,17 @@
                                 @if($key == 'is_active')
                                     <td>
                                         @if($value == 1)
-                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 0}} )"
+                                            <button onclick="toggleActive( {{route($callToAction, $record['id']), 0}} )"
                                                     type="button"
                                                     class="btn btn-primary">{{ trans('app.disable') }}</button>
-                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 1}} )"
+                                            <button onclick="toggleActive( {{route($callToAction, $record['id']), 1}} )"
                                                     type="button" style="display: none"
                                                     class="btn btn-success">{{ trans('app.active') }}</button>
                                         @else
-                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 1}} )"
+                                            <button onclick="toggleActive( {{route($callToAction, $record['id']), 1}} )"
                                                     type="button"
                                                     class="btn btn-success">{{ trans('app.active') }}</button>
-                                            <button onclick="enableaDisbaleLanguage( {{route($callToAction, $record['id']), 0}} )"
+                                            <button onclick="toggleActive( {{route($callToAction, $record['id']), 0}} )"
                                                     type="button" style="display: none"
                                                     class="btn btn-primary">{{ trans('app.disable') }}</button>
                                         @endif
@@ -47,8 +47,24 @@
 
 @section('scripts')
     <script>
-        function enableaDisbaleLanguage(url, value) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        function toggleActive(route, value) {
 
+            $.ajax({
+                url: route,
+                type: 'EDIT',
+                dataType: 'json',
+                success: function (value) {
+                    $('#' + response.id).remove();
+                },
+                error: function () {
+                    alert('ERROR')
+                }
+            });
         }
 
 
