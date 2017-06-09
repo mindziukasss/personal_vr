@@ -10,8 +10,9 @@
                             <th>{{$key}}</th>
                         @endforeach
                     </tr>
-                    <tr>
+
                         @foreach($list as $record)
+                        <tr id="{{$record['id']}}">
                             @foreach($record as $key=> $value)
                                 @if($key == 'is_active')
                                     <td>
@@ -19,6 +20,7 @@
                                             <button onclick="toggleActive( '{{route($callToAction, $record['id'])}}', 0)"
                                                     type="button"
                                                     class="btn btn-primary">{{ trans('app.disable') }}</button>
+
                                             <button onclick="toggleActive( '{{route($callToAction, $record['id'])}}', 1 )"
                                                     type="button" style="display: none"
                                                     class="btn btn-success">{{ trans('app.active') }}</button>
@@ -35,7 +37,8 @@
                                     <td>{{$value}}</td>
                                 @endif
                             @endforeach
-                    </tr>
+                        </tr>
+
                     @endforeach
                 </table>
             @else
@@ -61,8 +64,35 @@
                     is_active: value
                 },
                 success: function (response) {
-                    console.log(response);
-//                    $('#' + response.id).remove();
+//                    console.log(response);
+//                    console.log($('#' + response.id).hide());
+//                    $('#' + response.id).css({
+//                        opacity:0.5,
+//                        backgroundColor:'red'
+//                        })
+//                    console.log($('#' + response.id).find('button'))
+                    var $primary = $('#' + response.id).find('.btn-primary')
+                    var $success = $('#' + response.id).find('.btn-success')
+//                    console.log($primary,$success);
+
+//                    if(response.is_active == 0)
+//                    {
+//                        alert('respons is active' + response.is_active)
+//                    }
+
+                    if(response.is_active === '1')
+                    {
+                       $success.hide();
+                        $primary.show();
+
+                    }
+                    else {
+
+                        $success.show();
+                        $primary.hide();
+                    }
+
+
                 }
             });
 
