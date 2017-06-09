@@ -47,14 +47,28 @@
 
 @section('scripts')
     <script>
-//        $.ajaxSetup({
-//            headers: {
-//                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//            }
-//        });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         function toggleActive(url, value) {
+//            console.log(url,value);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    is_active: value
+                },
+                success: function (response) {
+                    console.log(response);
+//                    $('#' + response.id).remove();
+                },
+                error: function () {
+                    alert('ERROR')
+                }
+            });
 
-            console.log(url,value);
         }
 
 
