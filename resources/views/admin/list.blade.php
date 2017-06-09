@@ -11,7 +11,7 @@
                         @endforeach
                     </tr>
 
-                        @foreach($list as $record)
+                    @foreach($list as $record)
                         <tr id="{{$record['id']}}">
                             @foreach($record as $key=> $value)
                                 @if($key == 'is_active')
@@ -56,7 +56,6 @@
             }
         });
         function toggleActive(url, value) {
-//            console.log(url,value);
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -64,40 +63,19 @@
                     is_active: value
                 },
                 success: function (response) {
-//                    console.log(response);
-//                    console.log($('#' + response.id).hide());
-//                    $('#' + response.id).css({
-//                        opacity:0.5,
-//                        backgroundColor:'red'
-//                        })
-//                    console.log($('#' + response.id).find('button'))
                     var $primary = $('#' + response.id).find('.btn-primary')
                     var $success = $('#' + response.id).find('.btn-success')
-//                    console.log($primary,$success);
-
-//                    if(response.is_active == 0)
-//                    {
-//                        alert('respons is active' + response.is_active)
-//                    }
-
-                    if(response.is_active === '1')
-                    {
-                       $success.hide();
+                    if (response.is_active === '1') {
+                        $success.hide();
                         $primary.show();
-
                     }
                     else {
-
                         $success.show();
                         $primary.hide();
                     }
-
-
                 }
             });
-
         }
-
 
     </script>
 @endsection
