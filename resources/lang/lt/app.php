@@ -10,6 +10,8 @@ return [
     'no_data' => 'Duomenų nėra',
     'disable' => 'Išjungti',
     'active' => 'Įjungti',
-    'adminLanguagesTable' => 'Kalbų sąrašas'
+    'adminLanguagesTable' => 'Kalbų sąrašas',
+    'adminCategories' => 'Kategorijų sąrašas',
+    'newRecord' => 'Sukurk naują įrašą'
 
 ];

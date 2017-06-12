@@ -18,8 +18,11 @@ class VrCategoriesController extends Controller {
 	 */
 	public function index()
 	{
+        $config['list'] = VrCategories::get()->toArray();
+        $config['tableName'] = trans('app.adminCategories');
+        $config['create'] = 'app.categories.create';
+        return view('admin.list',$config);
 
-        //
 	}
 
 	/**
@@ -30,7 +33,8 @@ class VrCategoriesController extends Controller {
 	 */
 	public function create()
 	{
-		return view ('admin.categories.createCategory');
+
+		return view ('admin.create');
 	}
 
 	/**
@@ -91,5 +95,10 @@ class VrCategoriesController extends Controller {
 	{
         //
 	}
+
+	public function getFromData()
+    {
+
+    }
 
 }
