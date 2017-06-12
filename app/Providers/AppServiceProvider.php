@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        require '../Http/helpers.php';
+//        dd(base_path('App/Http/helpers.php')); check urls helpers
+        require base_path('App/Http/helpers.php');
     }
 
     /**

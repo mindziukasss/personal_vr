@@ -35,9 +35,22 @@ class VrCategoriesController extends Controller {
 	 */
 	public function create()
 	{
+        $config['tableName'] = trans('app.adminCategories');
+//        $config['languages'] = getActiveLanguages();
+        $config['create'] = 'app.categories.create';
 
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "languages_code",
+            "options" => getActiveLanguages()
+        ];
 
-		return view ('admin.create');
+        $config['fields'][] = [
+          "type" => "single_line",
+            "key" => "name"
+        ];
+
+		return view ('admin.create',$config);
 	}
 
 	/**

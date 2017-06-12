@@ -1,6 +1,6 @@
 @extends('admin.core')
 @section('content')
-    <div class="container">
+
 
         <div>
             <h2>{{$tableName}}</h2>
@@ -57,7 +57,7 @@
             </div>
         </div>
         @endsection
-    </div>
+
 
 @section('scripts')
     <script>
