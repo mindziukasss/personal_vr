@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+
+
 use App\Models\VrCategories;
 use Illuminate\Routing\Controller;
 use Ramsey\Uuid\Uuid;
@@ -33,6 +35,7 @@ class VrCategoriesController extends Controller {
 	 */
 	public function create()
 	{
+
 
 		return view ('admin.create');
 	}
