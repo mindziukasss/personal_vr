@@ -35,9 +35,9 @@ class VrCategoriesController extends Controller {
 	 */
 	public function create()
 	{
-        $config['tableName'] = trans('app.adminCategories');
-//        $config['languages'] = getActiveLanguages();
+        $config['titleForm'] = trans('app.adminCategoriesForm');
         $config['create'] = 'app.categories.create';
+        $config['back'] = 'app.categories.index';
 
         $config['fields'][] = [
             "type" => "drop_down",

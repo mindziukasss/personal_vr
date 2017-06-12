@@ -8,10 +8,19 @@ return [
     'orders' => 'Užsakymai',
     'admin_panel' => 'Administratoriaus meniu',
     'no_data' => 'Duomenų nėra',
+    'name' => 'Pavadinimas',
+    'back'=> 'Atgal',
+
     'disable' => 'Išjungti',
     'active' => 'Įjungti',
+
     'adminLanguagesTable' => 'Kalbų sąrašas',
     'adminCategories' => 'Kategorijų sąrašas',
-    'newRecord' => 'Sukurk naują įrašą'
+
+    'newRecord' => 'Sukurk naują įrašą',
+    'select' => 'Išsrinkite vieną',
+    'save' => 'Išsaugoti',
+    'new_record' => 'Sukurk įrašą į',
+    'adminCategoriesForm' => 'kategorijų sąrašą'
 
 ];
