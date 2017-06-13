@@ -2,7 +2,7 @@
 @section('content')
     <h2>{{trans('app.new_record')}}{{$titleForm}}</h2>
 
-    {!! Form::open(['url' => route($create)]) !!}
+    {!! Form::open(['url' => $route]) !!}
 
         @foreach($fields as $field)
 
