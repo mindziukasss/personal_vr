@@ -23,7 +23,8 @@ class VrCategories extends CoreModel
 
     public function translation ()
     {
-        return $this->hasOne(VrCategoriesTranslations::class, 'record_id' , 'id')->where('language_code', app()->getLocale());
+        return $this->hasOne(VrCategoriesTranslations::class, 'record_id' , 'id')
+            ->where('language_code', app()->getLocale());
     }
 
 

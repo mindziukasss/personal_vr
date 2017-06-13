@@ -23,6 +23,8 @@ class VrCategoriesController extends Controller
         $config['list'] = VrCategories::get()->toArray();
         $config['route'] = route('app.categories.create');
         $config['create'] = 'app.categories.create';
+        $config['edit'] = 'app.categories.edit';
+        $config['delete'] = 'app.categories.destroy';
         return view('admin.list', $config);
 
     }
@@ -115,12 +117,17 @@ class VrCategoriesController extends Controller
      * DELETE /vrcategories/{id}
      *
      * @param  int $id
-     * @return Response
+     * @return mixed
      */
     public function destroy($id)
     {
-        //
+        VrCategoriesTranslations::destroy(VrCategoriesTranslations::where('record_id', $id)->pluck('id')->toArray());
+         VrCategories::destroy($id);
+
+        return ["success" => true, "id" => $id];
+
     }
+
 
     public function getFormData()
     {
