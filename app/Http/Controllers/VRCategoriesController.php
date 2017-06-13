@@ -19,8 +19,9 @@ class VrCategoriesController extends Controller
      */
     public function index()
     {
-        $config['list'] = VrCategories::get()->toArray();
         $config['tableName'] = trans('app.adminCategories');
+        $config['list'] = VrCategories::get()->toArray();
+        $config['route'] = route('app.categories.create');
         $config['create'] = 'app.categories.create';
         return view('admin.list', $config);
 
@@ -36,9 +37,9 @@ class VrCategoriesController extends Controller
     {
         $config = $this->getFormData();
         $config['titleForm'] = trans('app.adminCategoriesForm');
-        $config['create'] = 'app.categories.create';
+        $config['route'] = route('app.categories.create');
         $config['back'] = 'app.categories.index';
-        
+
         return view('admin.create', $config);
     }
 
@@ -87,7 +88,14 @@ class VrCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $record = VrCategories::find($id)->toArray();
+
+//        dd($record);
+        $config = $this->getFormData();
+        $config['titleForm'] = $id;
+        $config['route'] = route('app.categories.create', $id);
+        $config['back'] = 'app.categories.index';
+        return view('admin.create', $config);
     }
 
     /**
