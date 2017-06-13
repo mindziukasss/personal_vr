@@ -34,21 +34,11 @@ class VrCategoriesController extends Controller
      */
     public function create()
     {
+        $config = $this->getFormData();
         $config['titleForm'] = trans('app.adminCategoriesForm');
         $config['create'] = 'app.categories.create';
         $config['back'] = 'app.categories.index';
-
-        $config['fields'][] = [
-            "type" => "drop_down",
-            "key" => "language_code",
-            "options" => getActiveLanguages()
-        ];
-
-        $config['fields'][] = [
-            "type" => "single_line",
-            "key" => "name"
-        ];
-
+        
         return view('admin.create', $config);
     }
 
@@ -124,9 +114,22 @@ class VrCategoriesController extends Controller
         //
     }
 
-    public function getFromData()
+    public function getFormData()
     {
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "language_code",
+            "options" => getActiveLanguages()
+        ];
 
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "name"
+        ];
+
+        return $config;
     }
+
+
 
 }
