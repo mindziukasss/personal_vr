@@ -32,7 +32,12 @@ class VrMenuController extends Controller
      */
     public function create()
     {
-        //
+        $config = $this->getFormData();
+        $config['titleForm'] = trans('app.adminMenuForm');
+        $config['route'] = route('app.menu.create');
+        $config['back'] = 'app.menu.index';
+//        dd($config);
+        return view('admin.create', $config);
     }
 
     /**
@@ -97,6 +102,36 @@ class VrMenuController extends Controller
     {
 
      //
+    }
+
+    public function getFormData()
+    {
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "language_code",
+            "options" => getActiveLanguages()
+        ];
+
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "name"
+        ];
+
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "url"
+        ];
+        $config['fields'][] = [
+            "type" => "check_box",
+            "key" => "new_windows",
+            "options" => [
+                "key" => "value"
+            ]
+        ];
+
+
+
+        return $config;
     }
 
 }

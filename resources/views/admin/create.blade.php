@@ -20,6 +20,13 @@
                     {{ Form::text($field['key'])}}
                 </div>
 
+            @elseif($field['type'] == 'check_box')
+
+                <div class="form-group">
+                    {{ Form::label(trans('Check_Box') )}}
+                    {{Form::checkbox('key', 'value')}}
+                </div>
+
             @endif
 
         @endforeach

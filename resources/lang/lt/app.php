@@ -23,6 +23,8 @@ return [
     'select' => 'Išsrinkite vieną',
     'save' => 'Išsaugoti',
     'new_record' => 'Sukurk įrašą į',
-    'adminCategoriesForm' => 'kategorijų sąrašą'
+
+    'adminCategoriesForm' => 'kategorijų sąrašą',
+    'adminMenuForm' => 'menių sąrašas',
 
 ];
