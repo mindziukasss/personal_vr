@@ -21,7 +21,13 @@ class VrMenuController extends Controller
      */
     public function index()
     {
-        return VrMenu::get()->toArray();
+        $config['tableName'] = trans('app.adminMenu');
+        $config['list'] = VrMenu::get()->toArray();
+        $config['route'] = route('app.menu.create');
+        $config['create'] = 'app.menu.create';
+        $config['edit'] = 'app.menu.edit';
+        $config['delete'] = 'app.menu.destroy';
+        return view('admin.list', $config);
     }
 
     /**

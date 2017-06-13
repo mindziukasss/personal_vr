@@ -18,13 +18,14 @@ return [
 
     'adminLanguagesTable' => 'Kalbų sąrašas',
     'adminCategories' => 'Kategorijų sąrašas',
+    'adminMenu' => 'Menių sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
     'select' => 'Išsrinkite vieną',
     'save' => 'Išsaugoti',
     'new_record' => 'Sukurk įrašą į',
 
-    'adminCategoriesForm' => 'kategorijų sąrašą',
-    'adminMenuForm' => 'menių sąrašas',
+    'adminCategoriesForm' => ' kategorijų sąrašą',
+    'adminMenuForm' => ' menių sąrašą',
 
 ];
