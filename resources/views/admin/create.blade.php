@@ -4,32 +4,41 @@
 
     {!! Form::open(['url' => $route]) !!}
 
-        @foreach($fields as $field)
+    @foreach($fields as $field)
+        @if(!($field['type'] == 'check_box'))
+            {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
+        @endif
 
-            @if($field['type'] == 'drop_down')
-
+        @if($field['type'] == 'drop_down')
+            @if($field['key'] == 'vr_parent_id')
+               
                 <div class="form-group">
-                    {{ Form::label(trans('app.select') )}}
+                    {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
+                </div>
+            @else
+                <div class="form-group">
                     {{Form::select($field['key'],$field['options'])}}
                 </div>
-
-            @elseif($field['type'] == 'single_line')
-
-                <div class="form-group">
-                    {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
-                    {{ Form::text($field['key'])}}
-                </div>
-
-            @elseif($field['type'] == 'check_box')
-
-                <div class="form-group">
-                    {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
-                    {{Form::checkbox('key', 'value')}}
-                </div>
-
             @endif
 
-        @endforeach
+        @elseif($field['type'] == 'single_line')
+
+            <div class="form-group">
+                {{ Form::text($field['key'])}}
+            </div>
+
+        @elseif($field['type'] == 'check_box')
+
+            @foreach($field['options'] as $option)
+                <div class="form-group">
+                    {{Form::label($option['title'])}}
+                    {{Form::checkbox($option['name'],$option['value'])}}
+                </div>
+            @endforeach
+
+        @endif
+
+    @endforeach
 
     <a class="btn btn-primary" href="{{route($back)}}">{{ trans('app.back') }}</a>
 

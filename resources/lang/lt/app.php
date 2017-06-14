@@ -21,12 +21,14 @@ return [
     'adminMenu' => 'Menių sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
-    'select' => 'Išsrinkite',
+    'language_code' => 'Išsrinkite',
     'save' => 'Išsaugoti',
     'new_record' => 'Sukurk įrašą į',
 
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',
     'url' => 'Nuoroda',
-    'new_windows' => 'Atidaryti naujame lange'
+    'new_windows' => 'Atidaryti naujame lange',
+    'sequence' => 'Eiliškumas',
+    'vr_parent_id' => 'Priklauso',
 ];

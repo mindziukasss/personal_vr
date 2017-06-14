@@ -54,9 +54,18 @@ class VrMenuController extends Controller
      */
 
 
-    public function store(Request $request)
+    public function store()
     {
-       //
+        $data = request()->all();
+        $record = VrMenu::create($data);
+
+        $data['record_id'] = $record->id;
+        VrMenuTranslations::create($data);
+
+//        dd($data);
+
+        return redirect(route('app.menu.edit', $record->id));
+
 
     }
 
@@ -91,7 +100,7 @@ class VrMenuController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
 
 //
@@ -107,7 +116,7 @@ class VrMenuController extends Controller
     public function destroy($id)
     {
 
-     //
+        //
     }
 
     public function getFormData()
@@ -128,14 +137,28 @@ class VrMenuController extends Controller
             "key" => "url"
         ];
         $config['fields'][] = [
-            "type" => "check_box",
-            "key" => "new_windows",
-            "options" => [
-                "key" => "value"
-            ]
+            "type" => "single_line",
+            "key" => "sequence"
         ];
 
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "vr_parent_id",
+            "options" => VrMenuTranslations::get()->pluck('name','record_id')
+        ];
 
+        $config['fields'][] = [
+            "type" => "check_box",
+//            "key" => "new_window",
+            "options" => [
+                [
+                    "name" => "new_window",
+                    "value" => 1,
+                    "title" => trans('app.new_windows')
+                ],
+            ]
+
+        ];
 
         return $config;
     }
