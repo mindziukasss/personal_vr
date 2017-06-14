@@ -42,7 +42,6 @@ class VrMenuController extends Controller
         $config['titleForm'] = trans('app.adminMenuForm');
         $config['route'] = route('app.menu.create');
         $config['back'] = 'app.menu.index';
-//        dd($config);
         return view('admin.create', $config);
     }
 
@@ -58,15 +57,9 @@ class VrMenuController extends Controller
     {
         $data = request()->all();
         $record = VrMenu::create($data);
-
         $data['record_id'] = $record->id;
         VrMenuTranslations::create($data);
-
-//        dd($data);
-
         return redirect(route('app.menu.edit', $record->id));
-
-
     }
 
     /**
@@ -115,8 +108,10 @@ class VrMenuController extends Controller
      */
     public function destroy($id)
     {
+        VrMenuTranslations::destroy(VrMenuTranslations::where('record_id', $id)->pluck('id')->toArray());
+        VrMenu::destroy($id);
+        return ["success" => true, "id" => $id];
 
-        //
     }
 
     public function getFormData()
