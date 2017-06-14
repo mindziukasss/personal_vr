@@ -16,7 +16,13 @@ class VrUsersController extends Controller
      */
     public function index()
     {
-        //
+        $config['tableName'] = trans('app.adminUsers');
+        $config['list'] = VrUsers::get()->toArray();
+        $config['route'] = route('app.users.create');
+        $config['create'] = 'app.users.create';
+        $config['edit'] = 'app.users.edit';
+        $config['delete'] = 'app.users.destroy';
+        return view('admin.list', $config);
     }
 
 

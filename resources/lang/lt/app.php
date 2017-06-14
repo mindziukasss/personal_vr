@@ -20,6 +20,7 @@ return [
     'adminCategories' => 'Kategorijų sąrašas',
     'adminMenu' => 'Menių sąrašas',
     'adminPages' => 'Puslapių sąrašas',
+    'adminUsers' => 'Vartotojų sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
     'language_code' => 'Išsrinkite',
