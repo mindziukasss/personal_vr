@@ -16,14 +16,14 @@
             @elseif($field['type'] == 'single_line')
 
                 <div class="form-group">
-                    {{ Form::label(trans('app.name') )}}
+                    {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
                     {{ Form::text($field['key'])}}
                 </div>
 
             @elseif($field['type'] == 'check_box')
 
                 <div class="form-group">
-                    {{ Form::label(trans('Check_Box') )}}
+                    {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
                     {{Form::checkbox('key', 'value')}}
                 </div>
 

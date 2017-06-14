@@ -21,11 +21,12 @@ return [
     'adminMenu' => 'Menių sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
-    'select' => 'Išsrinkite vieną',
+    'select' => 'Išsrinkite',
     'save' => 'Išsaugoti',
     'new_record' => 'Sukurk įrašą į',
 
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',
-
+    'url' => 'Nuoroda',
+    'new_windows' => 'Atidaryti naujame lange'
 ];
