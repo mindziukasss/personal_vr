@@ -13,13 +13,11 @@ class VrLanguageCodesSeeder extends Seeder
     public function run()
     {
         $language_codes = [
-            ["id" => "en", "language_code" => "en", "name" => "English"],
             ["id" => "lt", "language_code" => "lt", "name" => "Lietuvių"],
+            ["id" => "en", "language_code" => "en", "name" => "English"],
             ["id" => "ru", "language_code" => "ru", "name" => "Русский"],
             ["id" => "de", "language_code" => "de", "name" => "Deutsch"],
             ["id" => "fr", "language_code" => "fr", "name" => "Français"],
-
-
 
 
         ];
@@ -33,7 +31,7 @@ class VrLanguageCodesSeeder extends Seeder
             }
         } catch (Exception $e) {
             DB::rollback();
-            echo 'Point of failure '. $e->getCode() . ' ' . $e->getMessage();
+            echo 'Point of failure ' . $e->getCode() . ' ' . $e->getMessage();
             throw new Exception($e);
         }
         DB::commit();

@@ -11,7 +11,7 @@
 
         @if($field['type'] == 'drop_down')
             @if($field['key'] == 'vr_parent_id')
-               
+
                 <div class="form-group">
                     {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
                 </div>
