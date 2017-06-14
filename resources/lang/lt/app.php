@@ -19,6 +19,7 @@ return [
     'adminLanguagesTable' => 'Kalbų sąrašas',
     'adminCategories' => 'Kategorijų sąrašas',
     'adminMenu' => 'Menių sąrašas',
+    'adminPages' => 'Puslapių sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
     'language_code' => 'Išsrinkite',
@@ -27,8 +28,10 @@ return [
 
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',
+
     'url' => 'Nuoroda',
     'new_windows' => 'Atidaryti naujame lange',
     'sequence' => 'Eiliškumas',
     'vr_parent_id' => 'Priklauso',
+
 ];

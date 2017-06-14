@@ -18,18 +18,15 @@ class VrPagesController extends Controller {
 
 	public function index()
 	{
-       //
+       $config['tableName'] = trans('app.adminPages');
+        $config['list'] = VrPages::get()->toArray();
+        $config['route'] = route('app.pages.create');
+        $config['create'] = 'app.pages.create';
+        $config['edit'] = 'app.pages.edit';
+        $config['delete'] = 'app.pages.destroy';
+        return view('admin.list', $config);
 	}
 
-	public function indexFrontEnd()
-    {
-        //
-    }
-
-    public function indexFrontEndEn()
-    {
-        //
-    }
 
 	/**
 	 * Show the form for creating a new resource.
