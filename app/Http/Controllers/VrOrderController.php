@@ -18,7 +18,12 @@ class VrOrderController extends Controller {
 	 */
 	public function index()
 	{
-        //
+        $config['tableName'] = trans('app.adminOrders');
+        $config['list'] = VrOrder::get()->toArray();
+        $config['route'] = route('app.orders.create');
+        $config['edit'] = 'app.orders.edit';
+        $config['delete'] = 'app.orders.destroy';
+        return view('admin.list', $config);
 	}
 
 

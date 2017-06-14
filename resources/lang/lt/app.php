@@ -21,6 +21,7 @@ return [
     'adminMenu' => 'Menių sąrašas',
     'adminPages' => 'Puslapių sąrašas',
     'adminUsers' => 'Vartotojų sąrašas',
+    'adminOrders' => 'Užsakymų sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
     'language_code' => 'Išsrinkite',
