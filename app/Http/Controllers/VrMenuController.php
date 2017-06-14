@@ -83,7 +83,12 @@ class VrMenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $record = VrMenu::find($id)->toArray();
+        $config = $this->getFormData();
+        $config['titleForm'] = $id;
+        $config['route'] = route('app.menu.create', $id);
+        $config['back'] = 'app.menu.index';
+        return view('admin.create', $config);
     }
 
     /**
