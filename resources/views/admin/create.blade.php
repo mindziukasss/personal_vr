@@ -10,14 +10,14 @@
         @endif
 
         @if($field['type'] == 'drop_down')
-            @if($field['key'] == 'vr_parent_id')
+            @if($field['key'] == 'language_code')
 
                 <div class="form-group">
-                    {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
+                    {{Form::select($field['key'],$field['options'])}}
                 </div>
             @else
                 <div class="form-group">
-                    {{Form::select($field['key'],$field['options'])}}
+                    {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
                 </div>
             @endif
 
@@ -45,4 +45,15 @@
     {{Form::submit(trans('app.save'), array('class' => 'btn btn-success')) }}
 
     {!!Form::close()!!}
+@endsection
+@section('scripts')
+    <script>
+        $('#language_code').bind(
+            'change', function () {
+                window.location.href = "?language_code=" + $('#language_code').val();
+
+            }
+        )
+
+    </script>
 @endsection
