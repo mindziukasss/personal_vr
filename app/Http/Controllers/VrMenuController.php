@@ -84,6 +84,7 @@ class VrMenuController extends Controller
     public function edit($id)
     {
         $record = VrMenu::find($id)->toArray();
+//        dd($record);
         $config = $this->getFormData();
         $config['titleForm'] = $id;
         $config['route'] = route('app.menu.create', $id);

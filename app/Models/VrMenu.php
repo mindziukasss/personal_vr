@@ -23,11 +23,13 @@ class VrMenu extends CoreModel
 
     public function translation ()
     {
-        $languages = app()->getLocale();
 
+        $lang = request('language_code');
+        if($lang == null)
+            $lang = app()->getLocale();
 
         return $this->hasOne(VrMenuTranslations::class, 'record_id' , 'id')
-            ->where('language_code', $languages);
+            ->where('language_code', $lang);
     }
 
 }
