@@ -9,21 +9,41 @@
         @endif
 
         @if($field['type'] == 'drop_down')
-            @if($field['key'] == 'language_code')
-
-                <div class="form-group">
-                    {{Form::select($field['key'],$field['options'])}}
-                </div>
-            @else
-                <div class="form-group">
-                    {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
-                </div>
-            @endif
-
-        @elseif($field['type'] == 'single_line')
 
             @if(isset($record[$field['key']]))
 
+                @if($field['key'] == 'language_code')
+
+                    <div class="form-group">
+                        {{Form::select($field['key'],$field['options'], $record[$field['key']])}}
+                    </div>
+
+                @else
+                    <div class="form-group">
+                        {{Form::select($field['key'],$field['options'], $record[$field['key']], ['placeholder' => '']) }}
+                        
+                    </div>
+                @endif
+
+            @else
+                
+                @if($field['key'] == 'language_code')
+
+                    <div class="form-group">
+                        {{Form::select($field['key'],$field['options'])}}
+                    </div>
+
+                @else
+                    <div class="form-group">
+                        {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
+                    </div>
+                @endif
+
+            @endif
+
+        @elseif($field['type'] == 'single_line')
+            @if(isset($record[$field['key']]))
+                    
                 <div class="form-group">
                     {{ Form::text($field['key'], $record[$field['key']])}}
                 </div>
@@ -34,7 +54,6 @@
             @endif
 
         @elseif($field['type'] == 'check_box')
-
             @if(isset($record[$field['key']]))
                 @foreach($field['options'] as $option)
                     <div class="form-group">
