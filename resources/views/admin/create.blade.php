@@ -33,25 +33,23 @@
                 </div>
             @endif
 
-        {{--@elseif($field['type'] == 'check_box')--}}
+        @elseif($field['type'] == 'check_box')
 
-            {{--@if(isset($record[$field['key']]))--}}
-
-                {{--@foreach($record[$field['options']] as $option)--}}
-                    {{--<div class="form-group">--}}
-                        {{--{{Form::label($option['title'])}}--}}
-                        {{--{{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}--}}
-                    {{--</div>--}}
-                {{--@endforeach--}}
-
-            {{--@else--}}
-                {{--@foreach($field['options'] as $option)--}}
-                    {{--<div class="form-group">--}}
-                        {{--{{Form::label($option['title'])}}--}}
-                        {{--{{Form::checkbox($option['name'],$option['value'])}}--}}
-                    {{--</div>--}}
-                {{--@endforeach--}}
-            {{--@endif--}}
+            @if(isset($record[$field['key']]))
+                @foreach($field['options'] as $option)
+                    <div class="form-group">
+                        {{Form::label($option['title'])}}
+                        {{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}
+                    </div>
+                @endforeach
+            @else
+                @foreach($field['options'] as $option)
+                    <div class="form-group">
+                        {{Form::label($option['title'])}}
+                        {{Form::checkbox($option['name'],$option['value'])}}
+                    </div>
+                @endforeach
+            @endif
         @endif
 
     @endforeach
