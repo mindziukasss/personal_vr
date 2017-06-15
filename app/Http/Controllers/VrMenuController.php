@@ -84,12 +84,24 @@ class VrMenuController extends Controller
     public function edit($id)
     {
         $record = VrMenu::find($id)->toArray();
-//        dd($record);
+        $record['url'] = $record['translation']['url'];
+        $record['name'] = $record['translation']['name'];
+        $record['language_code'] = $record['translation']['language_code'];
+
         $config = $this->getFormData();
+
+        $config['record'] = $record;
+
         $config['titleForm'] = $id;
         $config['route'] = route('app.menu.create', $id);
         $config['back'] = 'app.menu.index';
-        return view('admin.create', $config);
+
+
+//        dd($record);
+//        dd($config);
+
+
+        return view('admin.create',$config);
     }
 
     /**
@@ -154,7 +166,7 @@ class VrMenuController extends Controller
 
         $config['fields'][] = [
             "type" => "check_box",
-//            "key" => "new_window",
+           "key" => "new_window",
             "options" => [
                 [
                     "name" => "new_window",

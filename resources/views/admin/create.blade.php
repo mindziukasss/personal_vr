@@ -3,7 +3,6 @@
     <h2>{{trans('app.new_record')}}{{$titleForm}}</h2>
 
     {!! Form::open(['url' => $route]) !!}
-
     @foreach($fields as $field)
         @if(!($field['type'] == 'check_box'))
             {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
@@ -23,19 +22,36 @@
 
         @elseif($field['type'] == 'single_line')
 
-            <div class="form-group">
-                {{ Form::text($field['key'])}}
-            </div>
+            @if(isset($record[$field['key']]))
 
-        @elseif($field['type'] == 'check_box')
-
-            @foreach($field['options'] as $option)
                 <div class="form-group">
-                    {{Form::label($option['title'])}}
-                    {{Form::checkbox($option['name'],$option['value'])}}
+                    {{ Form::text($field['key'], $record[$field['key']])}}
                 </div>
-            @endforeach
+            @else
+                <div class="form-group">
+                    {{ Form::text($field['key'])}}
+                </div>
+            @endif
 
+        {{--@elseif($field['type'] == 'check_box')--}}
+
+            {{--@if(isset($record[$field['key']]))--}}
+
+                {{--@foreach($record[$field['options']] as $option)--}}
+                    {{--<div class="form-group">--}}
+                        {{--{{Form::label($option['title'])}}--}}
+                        {{--{{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}--}}
+                    {{--</div>--}}
+                {{--@endforeach--}}
+
+            {{--@else--}}
+                {{--@foreach($field['options'] as $option)--}}
+                    {{--<div class="form-group">--}}
+                        {{--{{Form::label($option['title'])}}--}}
+                        {{--{{Form::checkbox($option['name'],$option['value'])}}--}}
+                    {{--</div>--}}
+                {{--@endforeach--}}
+            {{--@endif--}}
         @endif
 
     @endforeach
