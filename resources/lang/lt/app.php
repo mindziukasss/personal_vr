@@ -30,10 +30,19 @@ return [
 
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',
+    'adminPagesForm' => ' puslapių sąrašą',
 
     'url' => 'Nuoroda',
     'new_windows' => 'Atidaryti naujame lange',
     'sequence' => 'Eiliškumas',
     'vr_parent_id' => 'Priklauso',
+    'category_id' => "Kategoryjos",
+    'cover_id' => 'Titulinė nuotrauka',
+
+    'title' => 'Antraštė',
+    'description_short' => 'Trumpas aprašymas',
+    'description_long' => 'Ilgas aprašymas',
+    'slug' => 'Nuoroda(slug)',
+
 
 ];

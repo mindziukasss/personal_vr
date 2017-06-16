@@ -9,49 +9,52 @@
         @endif
 
         @if($field['type'] == 'drop_down')
-
             @if(isset($record[$field['key']]))
-
-                @if($field['key'] == 'language_code')
-
+                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' )
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'], $record[$field['key']])}}
                     </div>
-
                 @else
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'], $record[$field['key']], ['placeholder' => '']) }}
-                        
                     </div>
                 @endif
-
             @else
-                
-                @if($field['key'] == 'language_code')
-
+                @if($field['key'] == 'language_code' || $field['key'] == 'category_id')
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'])}}
                     </div>
-
                 @else
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
                     </div>
                 @endif
-
             @endif
+
 
         @elseif($field['type'] == 'single_line')
             @if(isset($record[$field['key']]))
-                    
-                <div class="form-group">
-                    {{ Form::text($field['key'], $record[$field['key']])}}
-                </div>
+                @if($field['key'] == 'description_long')
+                    <div class="form-group">
+                        {{ Form::textarea($field['key'], $record[$field['key']])}}
+                    </div>
+                @else
+                    <div class="form-group">
+                        {{ Form::text($field['key'], $record[$field['key']])}}
+                    </div>
+                @endif
             @else
-                <div class="form-group">
-                    {{ Form::text($field['key'])}}
-                </div>
+                @if($field['key'] == 'description_long')
+                    <div class="form-group">
+                        {{ Form::textarea($field['key'])}}
+                    </div>
+                @else
+                    <div class="form-group">
+                        {{ Form::text($field['key'])}}
+                    </div>
+                @endif
             @endif
+
 
         @elseif($field['type'] == 'check_box')
             @if(isset($record[$field['key']]))
@@ -69,7 +72,16 @@
                     </div>
                 @endforeach
             @endif
+
+        @elseif($field['type'] == 'image')
+
+            <div class="form-group">
+                {{Form::file('image.jpg')}}
+            </div>
+
         @endif
+
+
 
     @endforeach
 
