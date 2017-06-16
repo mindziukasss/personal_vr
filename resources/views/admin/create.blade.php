@@ -2,7 +2,7 @@
 @section('content')
     <h2>{{trans('app.new_record')}}{{$titleForm}}</h2>
 
-    {!! Form::open(['url' => $route]) !!}
+    {!! Form::open(['url' => $route,'files' => true]) !!}
     @foreach($fields as $field)
         @if(!($field['type'] == 'check_box'))
             {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
@@ -73,10 +73,10 @@
                 @endforeach
             @endif
 
-        @elseif($field['type'] == 'image')
+        @elseif($field['type'] == 'file')
 
             <div class="form-group">
-                {{Form::file('image.jpg')}}
+                {{Form::file('file')}}
             </div>
 
         @endif

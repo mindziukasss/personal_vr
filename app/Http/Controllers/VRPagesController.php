@@ -42,6 +42,7 @@ class VrPagesController extends Controller
         $config['titleForm'] = trans('app.adminPagesForm');
         $config['route'] = route('app.pages.create');
         $config['back'] = 'app.pages.index';
+
         return view('admin.create', $config);
     }
 
@@ -54,6 +55,10 @@ class VrPagesController extends Controller
     public function store()
     {
         $data = request()->all();
+        $resources = request()->file('file');
+        $uploadController = new VrResourcesController();
+        $record = $uploadController->upload($resources);
+        $data['cover_id'] = $record->id;
         $record = VrPages::create($data);
         $data['record_id'] = $record->id;
         VrPagesTranslations::create($data);
@@ -148,9 +153,9 @@ class VrPagesController extends Controller
         ];
 
         $config['fields'][] = [
-            "type" => "image",
+            "type" => "file",
             "key" => "cover_id",
-
+            "file" => VrResources::pluck('path', 'id')->toArray()
         ];
 
 

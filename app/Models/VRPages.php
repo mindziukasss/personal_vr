@@ -20,7 +20,7 @@ class VrPages extends CoreModel
     protected $fillable = ['id', 'category_id', 'cover_id'];
 
 
-    protected $with = ['translation'];
+    protected $with = ['translation', 'cover'];
 
     public function translation ()
     {
@@ -31,6 +31,11 @@ class VrPages extends CoreModel
 
         return $this->hasOne(VrPagesTranslations::class, 'record_id' , 'id')
             ->where('language_code', $lang);
+    }
+
+    public function cover()
+    {
+        return $this->hasOne(VrResources::class, 'cover_id', 'id');
     }
 
 
