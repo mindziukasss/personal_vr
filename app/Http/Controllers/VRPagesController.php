@@ -86,7 +86,22 @@ class VrPagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $record = VrPages::find($id)->toArray();
+        $record['slug'] = $record['translation']['slug'];
+        $record['title'] = $record['translation']['title'];
+        $record['description_short'] = $record['translation']['description_short'];
+        $record['description_long'] = $record['translation']['description_long'];
+        $record['language_code'] = $record['translation']['language_code'];
+
+        $config = $this->getFormData();
+
+        $config['record'] = $record;
+
+        $config['titleForm'] = $id;
+        $config['route'] = route('app.pages.create', $id);
+        $config['back'] = 'app.pages.index';
+
+        return view('admin.create',$config);
     }
 
     /**

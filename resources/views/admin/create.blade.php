@@ -43,11 +43,10 @@
                 </div>
             @endif
 
-
         @elseif($field['type'] == 'textarea')
             @if(isset ($record[$field['key']]))
                 <div class="form-group">
-                    {{ Form::text($field['key'],$record[$field['key']],['rows' => $field['rows'], 'columns' => $field['columns']])}}
+                    {{ Form::textarea($field['key'],$record[$field['key']],['rows' => $field['rows'], 'columns' => $field['columns'], ])}}
                 </div>
             @else
                 <div class="form-group">
@@ -74,10 +73,15 @@
             @endif
 
         @elseif($field['type'] == 'file')
-
-            <div class="form-group">
-                {{Form::file('file')}}
-            </div>
+            @if(isset($record[$field['key']]))
+                <div class="form-group">
+                    {{Form::file('file'),$record[$field['key']]}}
+                </div>
+            @else
+                <div class="form-group">
+                    {{Form::file('file')}}
+                </div>
+            @endif
 
         @endif
 
