@@ -33,26 +33,26 @@
 
 
         @elseif($field['type'] == 'single_line')
-            @if(isset($record[$field['key']]))
-                @if($field['key'] == 'description_long')
-                    <div class="form-group">
-                        {{ Form::textarea($field['key'], $record[$field['key']])}}
-                    </div>
-                @else
-                    <div class="form-group">
-                        {{ Form::text($field['key'], $record[$field['key']])}}
-                    </div>
-                @endif
+            @if(isset ($record[$field['key']]))
+                <div class="form-group">
+                    {{ Form::text($field['key'],$record[$field['key']])}}
+                </div>
             @else
-                @if($field['key'] == 'description_long')
-                    <div class="form-group">
-                        {{ Form::textarea($field['key'])}}
-                    </div>
-                @else
-                    <div class="form-group">
-                        {{ Form::text($field['key'])}}
-                    </div>
-                @endif
+                <div class="form-group">
+                    {{ Form::text($field['key'])}}
+                </div>
+            @endif
+
+
+        @elseif($field['type'] == 'textarea')
+            @if(isset ($record[$field['key']]))
+                <div class="form-group">
+                    {{ Form::text($field['key'],$record[$field['key']],['rows' => $field['rows'], 'columns' => $field['columns']])}}
+                </div>
+            @else
+                <div class="form-group">
+                    {{ Form::textarea($field['key'],null,['rows' => $field['rows'], 'columns' => $field['columns'] , 'class' => 'form_textarea'])}}
+                </div>
             @endif
 
 

@@ -1,4 +1,5 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
 use App\Models\VrCategories;
 use App\Models\VrCategoriesTranslations;
@@ -18,14 +19,13 @@ class VrPagesController extends Controller
      */
 
     public function index()
-    {
+    {   
         $config['tableName'] = trans('app.adminPages');
         $config['list'] = VrPages::get()->toArray();
         $config['route'] = route('app.pages.create');
         $config['create'] = 'app.pages.create';
         $config['edit'] = 'app.pages.edit';
         $config['delete'] = 'app.pages.destroy';
-
         return view('admin.list', $config);
     }
 
@@ -125,24 +125,28 @@ class VrPagesController extends Controller
             "options" => getActiveLanguages()
         ];
 
+
         $config['fields'][] = [
             "type" => "drop_down",
             "key" => "category_id",
             "options" => VrCategoriesTranslations::where('language_code', $lang)
-                ->pluck('name', 'record_id')->toArray()
+                ->pluck('name','record_id')
         ];
 
         $config['fields'][] = [
             "type" => "single_line",
             "key" => "title"
         ];
-
         $config['fields'][] = [
-            "type" => "single_line",
+            "type" => "textarea",
+            "rows" => 2,
+            "columns" => 40,
             "key" => "description_short"
         ];
         $config['fields'][] = [
-            "type" => "single_line",
+            "type" => "textarea",
+            "rows" => 8,
+            "columns" => 40,
             "key" => "description_long"
         ];
 

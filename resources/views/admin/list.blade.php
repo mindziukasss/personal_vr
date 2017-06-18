@@ -51,12 +51,16 @@
                                             class="btn btn-primary">{{ trans('app.disable') }}</button>
                                 @endif
                             </td>
-                        @elseif($key == 'translation')
-                            <td>{{$value['name'] . ' ' . $value['language_code']}}</td>
 
+
+                        @elseif($key == 'translation')
+                            @if(isset($value['title']))
+                                <td>{{$value['title'] . ' ' . $value['language_code']}}</td>
+                            @else
+                                <td>{{$value['name'] . ' ' . $value['language_code']}}</td>
+                            @endif
                         @else
                             <td>{{$value}}</td>
-
                         @endif
 
                     @endforeach
