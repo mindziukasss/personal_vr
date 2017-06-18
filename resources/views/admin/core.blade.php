@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    @include('admin.menu')
     @include('admin.nav')
     <div id="list">
         @yield('content')
