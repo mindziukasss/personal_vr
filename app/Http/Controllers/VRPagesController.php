@@ -125,7 +125,9 @@ class VrPagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        VrPagesTranslations::destroy(VrPagesTranslations::where('record_id', $id)->pluck('id')->toArray());
+        VrPages::destroy($id);
+        return ["success" => true, "id" => $id];
     }
 
     public function getFormData()
