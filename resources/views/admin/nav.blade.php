@@ -1,17 +1,25 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right">
-    @if (Auth::guest())
-      <li><a href="{{ route('login') }}">Login</a></li>
-      <li><a href="{{ route('register') }}">Register</a></li>
-    @else
-      @if()
-      <li><a href="?language_code=lt">Lt</a></li>
-      <li><a href="?language_code=en">En</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      @if (Auth::guest())
+        {{-- //TODO create link to frontend --}}
+      @else
+        @foreach (getActiveLanguages() as $key => $value) 
+          <li><a href="?language_code={{($key)}}">{{($value)}}</a></li>
+        @endforeach
+        <li>
+          <a href="{{ route('app.users.index') }}"><span class="glyphicon glyphicon-user"></span>{{ Auth::user()->name }}</a>
+        </li>
+        <li>
+          <a href="{{ route('logout') }}"onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            <span class="glyphicon glyphicon-log-in"></span>Logout
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}
+          </form>
+        </li>
+      @endif
     </ul>
-    @endif
   </div>
 </nav>
 

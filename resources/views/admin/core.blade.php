@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    @include('admin.menu')
     @include('admin.nav')
+    @include('admin.menu')
     <div id="list">
         @yield('content')
     </div>
