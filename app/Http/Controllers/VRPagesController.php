@@ -98,7 +98,7 @@ class VrPagesController extends Controller
         $config['record'] = $record;
 
         $config['titleForm'] = $id;
-        $config['route'] = route('app.pages.create', $id);
+        $config['route'] = route('app.pages.edit', $id);
         $config['back'] = 'app.pages.index';
 
         return view('admin.create',$config);
@@ -113,7 +113,15 @@ class VrPagesController extends Controller
      */
     public function update($id)
     {
-        //
+        $data = request()->all();
+        $record = VrPages::find($id);
+        $data['record_id'] = $id;
+        VrPagesTranslations::updateOrCreate([
+            'record_id' => $id,
+            'language_code' => $data['language_code']
+            ],$data);
+        return redirect(route('app.pages.edit', $record->id));
+
     }
 
     /**
