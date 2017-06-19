@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Models\VrConnUserRoles;
 use App\Models\VrRoles;
 use App\Models\VrUsers;
 use Illuminate\Routing\Controller;
@@ -52,7 +53,14 @@ class VrUsersController extends Controller
      */
     public function store()
     {
-        //
+        $data = request()->all();
+        $data['id'] = Uuid::uuid4();
+        $data['password'] = bcrypt($data['password']);
+        $record = VRUsers::create($data);
+        $data['user_id'] = $record->id;
+        VrConnUserRoles::create($data);
+
+        return redirect()->route('app.users.edit', $record->id);
     }
 
     /**
