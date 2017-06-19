@@ -84,7 +84,17 @@ class VrUsersController extends Controller
      */
     public function edit($id)
     {
-//
+        $record = VrUsers::find($id)->toArray();
+        $record['role_id'] = $record['rol']['role_id'];
+        $config = $this->getFormData();
+        $config['record'] = $record;
+
+        $config['titleForm'] = $id;
+        $config['route'] = route('app.users.create', $id);
+        $config['back'] = 'app.users.index';
+
+
+        return view('admin.create',$config);
     }
 
     /**
@@ -108,7 +118,7 @@ class VrUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     public function getFormData()
