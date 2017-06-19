@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
-use App\Models\VrOrder;
+
+use App\Models\VrRoles;
 use App\Models\VrUsers;
 use Illuminate\Routing\Controller;
 use Ramsey\Uuid\Uuid;
@@ -22,9 +23,9 @@ class VrUsersController extends Controller
         $config['create'] = 'app.users.create';
         $config['edit'] = 'app.users.edit';
         $config['delete'] = 'app.users.destroy';
+
         return view('admin.list', $config);
     }
-
 
 
     /**
@@ -35,7 +36,12 @@ class VrUsersController extends Controller
      */
     public function create()
     {
-        //
+        $config = $this->getFormData();
+        $config['titleForm'] = trans('app.adminUsersForm');
+        $config['route'] = route('app.users.create');
+        $config['back'] = 'app.users.index';
+
+        return view('admin.create', $config);
     }
 
     /**
@@ -46,7 +52,7 @@ class VrUsersController extends Controller
      */
     public function store()
     {
-       //
+        //
     }
 
     /**
@@ -96,6 +102,39 @@ class VrUsersController extends Controller
     {
         //
     }
-    
+
+    public function getFormData()
+    {
+
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "name"
+        ];
+
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "email"
+        ];
+
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "phone"
+        ];
+
+        $config['fields'][] = [
+            "type" => "single_line",
+            "key" => "password"
+        ];
+
+
+        $config['fields'][] = [
+            'type' => 'drop_down',
+            'key' => 'role_id',
+            'options' => VrRoles::pluck('name', 'id')
+        ];
+
+        return $config;
+
+    }
 
 }

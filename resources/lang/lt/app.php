@@ -31,6 +31,7 @@ return [
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',
     'adminPagesForm' => ' puslapių sąrašą',
+    'adminUsersForm' => ' vartotojų sąrašą',
 
     'url' => 'Nuoroda',
     'new_windows' => 'Atidaryti naujame lange',
@@ -43,6 +44,13 @@ return [
     'description_short' => 'Trumpas aprašymas',
     'description_long' => 'Ilgas aprašymas',
     'slug' => 'Nuoroda(slug)',
+
+    'email' => 'Elektroninis paštas',
+    'phone' => "Telefono numeris",
+    'password' => 'Slaptažodis',
+    'confirm_password' => 'Pakartokit slaptažodį',
+    'role_id' => 'Pasirinkite rolę',
+
 
 
 ];
