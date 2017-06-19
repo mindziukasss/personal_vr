@@ -112,20 +112,12 @@ class VrMenuController extends Controller
 
         $data = request()->all();
         $record = VrMenu::find($id);
-//        dd($record->toArray());
-        $record->update($data);
-//        $record = VrMenu->update($data);
+        $record->update($data);     
         $data['record_id'] = $id;
-//        dd($data);
         VrMenuTranslations::updateOrCreate([
             'record_id' => $id,
             'language_code' => $data['language_code']
-
             ],$data);
-
-
-
-
         return redirect(route('app.menu.edit', $record->id));
 
     }
