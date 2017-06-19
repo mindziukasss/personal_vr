@@ -92,10 +92,14 @@ class VrCategoriesController extends Controller
     {
         $record = VrCategories::find($id)->toArray();
 
-//        dd($record);
+        $record['name'] = $record['translation']['name'];
+        $record['language_code'] = $record['translation']['language_code'];
+
         $config = $this->getFormData();
+        $config['record'] = $record;
+
         $config['titleForm'] = $id;
-        $config['route'] = route('app.categories.create', $id);
+        $config['route'] = route('app.categories.edit', $id);
         $config['back'] = 'app.categories.index';
         return view('admin.create', $config);
     }
@@ -109,7 +113,15 @@ class VrCategoriesController extends Controller
      */
     public function update($id)
     {
-        //
+        $data = request()->all();
+        $record = VrCategories::find($id);
+        $record->update($data);
+        $data['record_id'] = $id;
+        VrCategoriesTranslations::updateOrCreate([
+           'record_id' => $id,
+            'language_code' => $data['language_code']
+            ],$data);
+        return redirect(route('app.categories.edit', $record->id));
     }
 
     /**
