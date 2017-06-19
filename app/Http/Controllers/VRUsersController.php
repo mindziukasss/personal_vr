@@ -2,6 +2,7 @@
 
 
 use App\Models\VrConnUserRoles;
+use App\Models\VrResources;
 use App\Models\VrRoles;
 use App\Models\VrUsers;
 use Illuminate\Routing\Controller;
@@ -118,7 +119,10 @@ class VrUsersController extends Controller
      */
     public function destroy($id)
     {
+        VrConnUserRoles::where('user_id', $id)->delete();
+        VrUsers::destroy($id);
 
+        return ["success" => true, "id" => $id];
     }
 
     public function getFormData()

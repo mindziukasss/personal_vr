@@ -93,13 +93,8 @@ class VrMenuController extends Controller
         $config['record'] = $record;
 
         $config['titleForm'] = $id;
-        $config['route'] = route('app.menu.create', $id);
+        $config['route'] = route('app.menu.edit', $id);
         $config['back'] = 'app.menu.index';
-
-
-//        dd($record);
-//        dd($config);
-
 
         return view('admin.create',$config);
     }
@@ -111,10 +106,28 @@ class VrMenuController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update()
+    public function update($id)
     {
 
-//
+
+        $data = request()->all();
+        $record = VrMenu::find($id);
+//        dd($record->toArray());
+        $record->update($data);
+//        $record = VrMenu->update($data);
+        $data['record_id'] = $id;
+//        dd($data);
+        VrMenuTranslations::updateOrCreate([
+            'record_id' => $id,
+            'language_code' => $data['language_code']
+
+            ],$data);
+
+
+
+
+        return redirect(route('app.menu.edit', $record->id));
+
     }
 
     /**
