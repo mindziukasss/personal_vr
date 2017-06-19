@@ -91,7 +91,7 @@ class VrUsersController extends Controller
         $config['record'] = $record;
 
         $config['titleForm'] = $id;
-        $config['route'] = route('app.users.create', $id);
+        $config['route'] = route('app.users.edit', $id);
         $config['back'] = 'app.users.index';
 
 
@@ -107,7 +107,15 @@ class VrUsersController extends Controller
      */
     public function update($id)
     {
-        //
+        $data = request()->all();
+        $record = VrUsers::find($id);
+        $record->update($data);
+        $data['user_id'] = $id;
+        VrConnUserRoles::updateOrCreate([
+            'user_id' => $id,
+            'role_id' => $data['role_id']
+            ],$data);
+        return redirect(route('app.users.edit', $record->id));
     }
 
     /**
