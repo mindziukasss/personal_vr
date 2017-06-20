@@ -7,6 +7,7 @@ use App\Models\VrPages;
 use App\Models\VrPagesTranslations;
 use App\Models\VrResources;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class VrPagesController extends Controller
 {
@@ -26,6 +27,8 @@ class VrPagesController extends Controller
         $config['create'] = 'app.pages.create';
         $config['edit'] = 'app.pages.edit';
         $config['delete'] = 'app.pages.destroy';
+
+
         return view('admin.list', $config);
     }
 
@@ -133,8 +136,15 @@ class VrPagesController extends Controller
      */
     public function destroy($id)
     {
+
+
         VrPagesTranslations::destroy(VrPagesTranslations::where('record_id', $id)->pluck('id')->toArray());
+//        Simple delete
+//        $cover_id = DB::table('vr_pages')->where('id',$id)->value('cover_id');
+//        VrResources::where('id', $cover_id )->delete();
+        VRResources::find(VRPages::find($id)->cover_id)->delete();
         VrPages::destroy($id);
+
         return ["success" => true, "id" => $id];
     }
 
