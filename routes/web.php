@@ -15,9 +15,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+
+Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], function () {
     Route::get('/', function () {   

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right">
       @if (Auth::guest())
-        {{-- //TODO create link to frontend --}}
+        {{-- //TODO create link to user --}}
       @else
         @foreach (getActiveLanguages() as $key => $value) 
           <li><a href="?language_code={{($key)}}">{{($value)}}</a></li>

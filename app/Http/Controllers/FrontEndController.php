@@ -9,18 +9,18 @@ class FrontEndController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /frontend
+	 * GET /user
 	 *
 	 * @return Response
 	 */
 	public function index()
     {
-       //
+       return view('user.user');
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /frontend/create
+	 * GET /user/create
 	 *
 	 * @return Response
 	 */
@@ -31,7 +31,7 @@ class FrontEndController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /frontend
+	 * POST /user
 	 *
 	 * @return Response
 	 */
@@ -42,7 +42,7 @@ class FrontEndController extends Controller {
 
 	/**
 	 * Display the specified resource.
-	 * GET /frontend/{id}
+	 * GET /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -54,7 +54,7 @@ class FrontEndController extends Controller {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /frontend/{id}/edit
+	 * GET /user/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -66,7 +66,7 @@ class FrontEndController extends Controller {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /frontend/{id}
+	 * PUT /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -78,7 +78,7 @@ class FrontEndController extends Controller {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /frontend/{id}
+	 * DELETE /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

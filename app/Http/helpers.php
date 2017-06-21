@@ -2,6 +2,7 @@
 
 
 use App\Models\VrLanguageCodes;
+use App\Models\VrMenu;
 
 function getActiveLanguages()
 {
@@ -21,4 +22,12 @@ function getActiveLanguages()
 
     return $languagesLocale;
 
+}
+
+
+function getFrontendMenu ()
+{
+    $data = VrMenu::where('vr_parent_id', null)->get()->toArray();
+
+    return [$data] ;
 }
