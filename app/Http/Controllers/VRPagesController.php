@@ -95,6 +95,7 @@ class VrPagesController extends Controller
         $record['description_short'] = $record['translation']['description_short'];
         $record['description_long'] = $record['translation']['description_long'];
         $record['language_code'] = $record['translation']['language_code'];
+        $record['path'] = $record['image']['path'];
 
         $config = $this->getFormData();
 

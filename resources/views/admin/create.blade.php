@@ -75,6 +75,7 @@
         @elseif($field['type'] == 'file')
             @if(isset($record[$field['key']]))
                 <div class="form-group">
+                    <td><img src={{$record['path']}} height="60" width="90"></td>
                     {{Form::file('file'),$record[$field['key']]}}
                 </div>
             @else
