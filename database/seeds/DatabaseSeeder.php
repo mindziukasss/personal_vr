@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(VrRolesSeeder::class);
         $this->call(VrLanguageCodesSeeder::class);
+        $this->call(VrCategoriesSeeder::class);
+
+
 //        $this->call(VrMenuSeeder::class);
 
     }
