@@ -118,7 +118,8 @@ class VrPagesController extends Controller
     public function update($id)
     {
         $data = request()->all();
-        $record = VrPages::find($id);
+        $record = VRPages::find($id);
+        $record->update($data);
         $data['record_id'] = $id;
         VrPagesTranslations::updateOrCreate([
             'record_id' => $id,
