@@ -69,7 +69,9 @@
                             @else
                                 <td>Nofoto</td>
                             @endif
-
+                        @elseif($key == 'submenu' )
+                            @if(!in_array($key, $ignore) )
+                            @endif
                         @else
                             <td>{{$value}}</td>
                         @endif
