@@ -23,7 +23,6 @@ class VrMenuController extends Controller
     {
         $config['tableName'] = trans('app.adminMenu');
         $config['list'] = VrMenu::get()->toArray();
-        $config['ignore'] = ['submenu'];
         $config['route'] = route('app.menu.create');
         $config['create'] = 'app.menu.create';
         $config['edit'] = 'app.menu.edit';

@@ -19,7 +19,7 @@ class VrMenu extends CoreModel
     protected $fillable = ['id', 'new_window', 'sequence', 'vr_parent_id'];
 
 
-    protected $with = ['translation', 'submenu'];
+    protected $with = ['translation'];
 
     public function translation ()
     {
@@ -34,7 +34,8 @@ class VrMenu extends CoreModel
 
     public function submenu()
     {
-        return $this->hasMany(VrMenu::class, 'vr_parent_id');
+        return $this->hasMany(VrMenu::class, 'vr_parent_id', 'id')
+            ->with('submenu')->orderByDesc('sequence');
     }
 
 }

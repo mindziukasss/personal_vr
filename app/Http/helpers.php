@@ -27,12 +27,7 @@ function getActiveLanguages()
 
 function getFrontendMenu ()
 { 
-  $data = VrMenu::where('vr_parent_id', null)->get()->toArray();
-
-    $config = [];
-    foreach ($data as $key => $value) {
-        array_push($config,$value['translation']);
-    }
-     // dd($config);
-    return [$config];
+  $data = VrMenu::where('vr_parent_id', null)->with(['submenu'])
+      ->orderBy('sequence', 'desc')->get()->toArray();
+    return $data;
 }
