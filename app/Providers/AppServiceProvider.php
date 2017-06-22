@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         {
            View::share('menu', getFrontendMenu());
            View::share('lang_menu', getActiveLanguages());
+           View::share('rooms', getVRrooms());
        }
 
     }

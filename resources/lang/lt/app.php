@@ -51,6 +51,6 @@ return [
     'confirm_password' => 'Pakartokit slaptažodį',
     'role_id' => 'Pasirinkite rolę',
     'languages' => 'Kalbos',
-
+    'rooms' => 'Virtualus kambariai',
 
 ];
