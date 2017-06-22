@@ -3,6 +3,8 @@
 use App\Models\VrLanguageCodes;
 use App\Models\VrMenu;
 use App\Models\VrMenuTranslations;
+use App\Models\VrPages;
+use App\Models\VrPagesTranslations;
 use Illuminate\Routing\Controller;
 
 class FrontEndController extends Controller {
@@ -17,6 +19,17 @@ class FrontEndController extends Controller {
     {
        return view('user.frontend');
 	}
+
+	public function pageShow ($lang,$slug)
+    {
+        $data['page'] = VrPagesTranslations::where('slug', $slug)->
+                                            where('language_code', $lang)->
+                                            with(['page'])->first()->toArray();
+        dd($data);
+
+
+        return view('user.pageShow', $data);
+    }
 
 	/**
 	 * Show the form for creating a new resource.

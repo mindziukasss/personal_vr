@@ -18,7 +18,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/', function () {
 //    return view('welcome');
 
-Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
+
+Route::group(['prefix' => '/'], function (){
+    Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
+    Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
+
+//    Route::group(['prefix' => '{id}'], function (){
+//        Route::get('/', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
+//    });
+});
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], function () {

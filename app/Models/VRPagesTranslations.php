@@ -22,4 +22,9 @@ class VrPagesTranslations extends CoreModel
     protected $fillable = ['id', 'record_id', 'language_code', 'slug', 'title', 'description_short', 'description_long'];
 
 
+    public function page ()
+    {
+        return $this->hasOne(VRPages::class,'id' , 'record_id');
+    }
+
 }
