@@ -13,9 +13,21 @@
             @else
                 <li class="active"><a href="{{$record['translation']['url']}}"> {{$record['translation']['name']}}
                         <span class="sr-only">(current)</span></a></li>
+
                 </li>
             @endif
         @endforeach
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">{{trans('app.languages')}}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                    @foreach($lang_menu as $key => $value)
+                        <li><a href="?language_code={{($key)}}">{{($value)}}</a></li>
+                    @endforeach
+                </ul>
+            </li>
+
     </ul>
 </div>
 

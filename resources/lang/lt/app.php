@@ -50,7 +50,7 @@ return [
     'password' => 'Slaptažodis',
     'confirm_password' => 'Pakartokit slaptažodį',
     'role_id' => 'Pasirinkite rolę',
-
+    'languages' => 'Kalbos',
 
 
 ];
