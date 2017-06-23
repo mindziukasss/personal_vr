@@ -32,6 +32,7 @@ return [
     'adminMenuForm' => ' menių sąrašą',
     'adminPagesForm' => ' puslapių sąrašą',
     'adminUsersForm' => ' vartotojų sąrašą',
+    'adminOrdersForm' => ' užsakymų sąrašą',
 
     'url' => 'Nuoroda',
     'new_windows' => 'Atidaryti naujame lange',
@@ -52,5 +53,13 @@ return [
     'role_id' => 'Pasirinkite rolę',
     'languages' => 'Kalbos',
     'rooms' => 'Virtualus kambariai',
+
+    'user_id' => 'Vartotojas',
+    'status'   => 'Užsakymo statusas',
+    'pending' => 'nepatvirtinas',
+    'canceled' => 'atšauktas',
+    'aproved' => 'patvirtintas',
+
+
 
 ];

@@ -3,6 +3,7 @@
 use App\Models\VrOrder;
 use App\Models\VrPages;
 use App\Models\VrReservations;
+use App\Models\VrUsers;
 use Carbon\Carbon;
 use DateTimeZone;
 use Illuminate\Routing\Controller;
@@ -22,10 +23,10 @@ class VrOrderController extends Controller {
         $config['list'] = VrOrder::get()->toArray();
         $config['route'] = route('app.orders.create');
         $config['edit'] = 'app.orders.edit';
+        $config['create'] = 'app.orders.create';
         $config['delete'] = 'app.orders.destroy';
         return view('admin.list', $config);
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -36,7 +37,12 @@ class VrOrderController extends Controller {
 	public function create()
 	{
 
-		//
+        $config = $this->getFormData();
+        $config['titleForm'] = trans('app.adminOrdersForm');
+        $config['route'] = route('app.orders.create');
+        $config['back'] = 'app.orders.index';
+//        dd($config);
+        return view('admin.create', $config);
 
 	}
 
@@ -99,5 +105,29 @@ class VrOrderController extends Controller {
 	{
 		//
 	}
+
+    public function getFormData()
+    {
+
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "user_id",
+            "options" => VrUsers::pluck('email', 'id')->toArray()
+        ];
+
+
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "status",
+            "options" => [
+                'pending' => trans('app.pending'),
+                'canceled' => trans('app.canceled'),
+                'aproved' => trans('app.aproved')
+            ]
+        ];
+
+
+        return $config;
+    }
 
 }
