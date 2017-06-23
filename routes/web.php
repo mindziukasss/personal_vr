@@ -15,19 +15,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/', function () {
-//    return view('welcome');
-
-
-Route::group(['prefix' => '/'], function (){
-    Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
-    Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
-
-//    Route::group(['prefix' => '{id}'], function (){
-//        Route::get('/', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
-//    });
-});
-
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], function () {
@@ -114,6 +101,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
             Route::get('/orders', ['as' => 'app.users.orders', 'uses' => 'VrUsersController@orderIndex']);
         });
     });
+});
+
+
+Route::group(['prefix' => '/'], function (){
+    Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
+    Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
+
+//    Route::group(['prefix' => '{id}'], function (){
+//        Route::get('/', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
+//    });
 });
 
 //Route::group(['prefix' => '{lang}', 'middleware' => ['language']], function (){
