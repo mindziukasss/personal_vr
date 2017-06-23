@@ -106,7 +106,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
 
 Route::group(['prefix' => '/'], function (){
     Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
-    Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
+        Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
 
 //    Route::group(['prefix' => '{id}'], function (){
 //        Route::get('/', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);

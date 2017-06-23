@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
 
+<head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('user.style')
 
-
+    <title>@yield('title')</title>
 </head>
 
+
 <body>
-
 @include('user.menu')
-<div id="id-menu">
-
+{{--<div id="id-menu">--}}
+{{--</div>--}}
+<div id="page">
+    @yield('content')
 </div>
 
 

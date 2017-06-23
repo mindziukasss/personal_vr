@@ -32,7 +32,7 @@
                    aria-expanded="false">{{trans('app.rooms')}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     @foreach($rooms as $value)
-                        <li><a href=" {{app()->getLocale(). '/pages/' . ($value['translation']['slug'])}}">{{($value['translation']['title'])}}</a></li>
+                        <li><a href=" /{{app()->getLocale(). '/pages/' . ($value['translation']['slug'])}}">{{($value['translation']['title'])}}</a></li>
                     @endforeach
                 </ul>
             </li>
