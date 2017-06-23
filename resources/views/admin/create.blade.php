@@ -10,6 +10,12 @@
 
         @if($field['type'] == 'drop_down')
             @if(isset($record[$field['key']]))
+                {{--@if(isset($record[$field['key']]) && $field['key'] == 'user_id' )--}}
+                    {{--<div class="form-group">--}}
+                        {{--{{ Form::label($field['key'],$record[$field['key']])}}--}}
+                    {{--</div>--}}
+                {{--@endif--}}
+
                 @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'user_id' || $field['key'] == 'status')
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'], $record[$field['key']])}}
@@ -19,7 +25,9 @@
                         {{Form::select($field['key'],$field['options'], $record[$field['key']], ['placeholder' => '']) }}
                     </div>
                 @endif
+
             @else
+
                 @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'user_id' || $field['key'] == 'status')
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'])}}
@@ -29,6 +37,7 @@
                         {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
                     </div>
                 @endif
+
             @endif
 
 

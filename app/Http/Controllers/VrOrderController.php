@@ -54,7 +54,10 @@ class VrOrderController extends Controller {
 	 */
 	public function store()
 	{
-        //
+        $data = request()->all();
+        VrOrder::create($data);
+
+        return redirect(route('app.orders.index'));
 
     }
 
@@ -79,7 +82,15 @@ class VrOrderController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$record = VrOrder::find($id)->toArray();
+
+        $config = $this->getFormData();
+        $config['record'] = $record;
+        $config['titleForm'] = $id;
+        $config['route'] = route('app.orders.edit', $id);
+        $config['back'] = 'app.orders.index';
+
+        return view('admin.create',$config);
 	}
 
 	/**
@@ -91,7 +102,11 @@ class VrOrderController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $data = request()->all();
+        $record = VrOrder::find($id);
+        $record->update($data);
+
+        return redirect(route('app.orders.index'));
 	}
 
 	/**
@@ -103,7 +118,8 @@ class VrOrderController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        VrOrder::destroy($id);
+        return ["success" => true, "id" => $id];
 	}
 
     public function getFormData()
@@ -124,6 +140,12 @@ class VrOrderController extends Controller {
                 'canceled' => trans('app.canceled'),
                 'aproved' => trans('app.aproved')
             ]
+        ];
+
+        $config['fields'][] = [
+          "type" => "user_text",
+            "key" => "user_id",
+            "options" => VrUsers::pluck('email', 'id')->toArray()
         ];
 
 
