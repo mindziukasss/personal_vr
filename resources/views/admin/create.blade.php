@@ -28,7 +28,8 @@
 
             @else
 
-                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'user_id' || $field['key'] == 'status')
+                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'user_id' || $field['key'] == 'status' ||
+                 $field['key'] == 'time' || $field['key'] == 'virtual_room' )
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'])}}
                     </div>

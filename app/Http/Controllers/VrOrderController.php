@@ -2,9 +2,11 @@
 
 use App\Models\VrOrder;
 use App\Models\VrPages;
+use App\Models\VrPagesTranslations;
 use App\Models\VrReservations;
 use App\Models\VrUsers;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use DateTimeZone;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
@@ -122,8 +124,43 @@ class VrOrderController extends Controller {
         return ["success" => true, "id" => $id];
 	}
 
+    /**
+     * @return array
+     */
+
+    private function getVRroomsWithcategory()
+    {
+        $pagesData = (new VRPages)->getTable();
+        $pagesDataTrans = (new VrPagesTranslations)->getTable();
+
+        return (VRPages::where('category_id', 'virtual_room')->join($pagesDataTrans, "$pagesDataTrans.record_id", '=' ,"$pagesData.id")
+            ->pluck("$pagesDataTrans.title", "$pagesData.id")->toArray());
+
+    }
+
     public function getFormData()
     {
+
+        $options = [];
+        $now = Carbon::now();
+        $end_data = Carbon::createFromDate()->addDay(14);
+        for ($option = $now; $option->lte($end_data); $option->addDay()) {
+            $options[$option->format('Y-m-d')] = $option->format('Y-m-d');
+        }
+
+
+
+        $config['fields'][] = [
+          "type" => "drop_down",
+            "key" => "time",
+            "options" => $options
+        ];
+
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "virtual_room",
+            "options" => $this->getVRroomsWithcategory()
+        ];
 
         $config['fields'][] = [
             "type" => "drop_down",
@@ -142,11 +179,11 @@ class VrOrderController extends Controller {
             ]
         ];
 
-        $config['fields'][] = [
-          "type" => "user_text",
-            "key" => "user_id",
-            "options" => VrUsers::pluck('email', 'id')->toArray()
-        ];
+//        $config['fields'][] = [
+//          "type" => "user_text",
+//            "key" => "user_id",
+//            "options" => VrUsers::pluck('email', 'id')->toArray()
+//        ];
 
 
         return $config;

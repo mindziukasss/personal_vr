@@ -60,6 +60,9 @@ return [
     'canceled' => 'atšauktas',
     'aproved' => 'patvirtintas',
 
+    'virtual_room' => 'Vr patirtis',
+    'time' => 'Laikas'
+
 
 
 ];
