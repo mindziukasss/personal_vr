@@ -4,7 +4,7 @@
       @if (Auth::guest())
         {{-- //TODO create link to user --}}
       @else
-        @foreach (getActiveLanguages() as $key => $value) 
+        @foreach (getActiveLanguages() as $key => $value)
           <li><a href="?language_code={{($key)}}">{{($value)}}</a></li>
         @endforeach
         <li>

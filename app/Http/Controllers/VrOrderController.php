@@ -91,7 +91,6 @@ class VrOrderController extends Controller {
         $config['titleForm'] = $id;
         $config['route'] = route('app.orders.edit', $id);
         $config['back'] = 'app.orders.index';
-
         return view('admin.create',$config);
 	}
 
@@ -138,6 +137,7 @@ class VrOrderController extends Controller {
 
     }
 
+
     public function getFormData()
     {
 
@@ -147,8 +147,6 @@ class VrOrderController extends Controller {
         for ($option = $now; $option->lte($end_data); $option->addDay()) {
             $options[$option->format('Y-m-d')] = $option->format('Y-m-d');
         }
-
-
 
         $config['fields'][] = [
           "type" => "drop_down",
@@ -162,10 +160,19 @@ class VrOrderController extends Controller {
             "options" => $this->getVRroomsWithcategory()
         ];
 
+
         $config['fields'][] = [
-            "type" => "drop_down",
+            "type" => "user_down",
             "key" => "user_id",
             "options" => VrUsers::pluck('email', 'id')->toArray()
+
+        ];
+
+        $config['fields'][] = [
+            "type" => "user",
+            "key" => "",
+            "options" => VrUsers::pluck('email', 'id')->toArray()
+
         ];
 
 
@@ -178,13 +185,6 @@ class VrOrderController extends Controller {
                 'aproved' => trans('app.aproved')
             ]
         ];
-
-//        $config['fields'][] = [
-//          "type" => "user_text",
-//            "key" => "user_id",
-//            "options" => VrUsers::pluck('email', 'id')->toArray()
-//        ];
-
 
         return $config;
     }

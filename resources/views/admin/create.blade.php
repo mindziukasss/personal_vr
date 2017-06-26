@@ -11,12 +11,13 @@
         @if($field['type'] == 'drop_down')
             @if(isset($record[$field['key']]))
                 {{--@if(isset($record[$field['key']]) && $field['key'] == 'user_id' )--}}
-                    {{--<div class="form-group">--}}
-                        {{--{{ Form::label($field['key'],$record[$field['key']])}}--}}
-                    {{--</div>--}}
+                {{--<div class="form-group">--}}
+                {{--{{ Form::label($field['key'],$record[$field['key']])}}--}}
+                {{--</div>--}}
                 {{--@endif--}}
 
-                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'user_id' || $field['key'] == 'status')
+                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'status' ||
+                $field['key'] == 'time' || $field['key'] == 'virtual_room')
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'], $record[$field['key']])}}
                     </div>
@@ -28,8 +29,8 @@
 
             @else
 
-                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'user_id' || $field['key'] == 'status' ||
-                 $field['key'] == 'time' || $field['key'] == 'virtual_room' )
+                @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'status'
+                 || $field['key'] == 'time' || $field['key'] == 'virtual_room' )
                     <div class="form-group">
                         {{Form::select($field['key'],$field['options'])}}
                     </div>
@@ -94,6 +95,17 @@
                 </div>
             @endif
 
+        @elseif($field['type'] == 'user_down')
+            @if(isset($record[$field['key']]))
+                <div class="form-group">
+                    {{ Form::label($record[$field['key']]) }}
+                </div>
+            @else
+                <div class="form-group">
+                    {{Form::select($field['key'],$field['options'])}}
+                </div>
+
+            @endif
         @endif
 
 

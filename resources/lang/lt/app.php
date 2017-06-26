@@ -61,7 +61,8 @@ return [
     'aproved' => 'patvirtintas',
 
     'virtual_room' => 'Vr patirtis',
-    'time' => 'Laikas'
+    'time' => 'Laikas',
+    '' => ''
 
 
 
