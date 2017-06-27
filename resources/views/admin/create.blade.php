@@ -123,15 +123,14 @@
         var $time = $('#time');
         var $virtual_room = $('#virtual_room');
 
+        function getAvailableHours() {
+           console.log($time.val(),($virtual_room.val()))
+        }
+
         if ($time.length > 0 && $virtual_room.length > 0) {
 
-            $time.bind('change', function () {
-                console.log($time.val())
-            });
-
-            $virtual_room.bind('change', function () {
-                console.log($virtual_room.val())
-            });
+            $time.bind('change', getAvailableHours)
+            $virtual_room.bind('change', getAvailableHours)
 
         }
 
