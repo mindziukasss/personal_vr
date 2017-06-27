@@ -131,10 +131,13 @@ class VrOrderController extends Controller {
     public function reserv() {
 
         $data = request()->all();
+//        dd($data);
         $time_start =  Carbon::parse($data['time'])->startOfDay();
         $time_end = Carbon::parse($data['time'])->endOfDay();
-        return VrReservations::where('time', '>=' , $time_start )
-                                        ->where('time', '<=' , $time_end)->pluck('time')->toArray();
+        return VrReservations::where('experience_id',$data['experience_id'])
+                                    ->where('time', '>=' , $time_start )
+                                        ->where('time', '<=' , $time_end)
+                                        ->pluck('time')->toArray();
 
     }
     private function getVRroomsWithcategory()

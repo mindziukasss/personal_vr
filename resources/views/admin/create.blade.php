@@ -123,9 +123,27 @@
         var $time = $('#time');
         var $virtual_room = $('#virtual_room');
 
-        function getAvailableHours() {
-           console.log($time.val(),($virtual_room.val()))
-        }
+
+            function getAvailableHours() {
+                $.ajax({
+                    url: '{{ route('app.orders.reserv') }}',
+                    type: 'GET',
+                    data: {
+                        time: $time.val(),
+                        experience_id: $virtual_room.val()
+                    },
+                    success: function (response) {
+//                        $('#' + response.id).remove();
+                        console.log(response)
+                    },
+                    error: function () {
+                        alert('ERROR')
+                    }
+
+                });
+            }
+//           console.log($time.val(),($virtual_room.val()))
+
 
         if ($time.length > 0 && $virtual_room.length > 0) {
 
