@@ -4,7 +4,7 @@ namespace App\Models;
 
 
 
-class VrResources extends CoreModel
+class VRResources extends CoreModel
 {
     use UuidTrait;
 

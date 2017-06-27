@@ -1,15 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\VrCategories;
+use App\Models\VRCategories;
 use App\Models\VrCategoriesTranslations;
-use App\Models\VrPages;
-use App\Models\VrPagesTranslations;
-use App\Models\VrResources;
+use App\Models\VRPages;
+use App\Models\VRPagesTranslations;
+use App\Models\VRResources;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
-class VrPagesController extends Controller
+class VRPagesController extends Controller
 {
 
     /**
@@ -22,7 +22,7 @@ class VrPagesController extends Controller
     public function index()
     {   
         $config['tableName'] = trans('app.adminPages');
-        $config['list'] = VrPages::get()->toArray();
+        $config['list'] = VRPages::get()->toArray();
         $config['route'] = route('app.pages.create');
         $config['create'] = 'app.pages.create';
         $config['edit'] = 'app.pages.edit';
@@ -58,13 +58,15 @@ class VrPagesController extends Controller
     public function store()
     {
         $data = request()->all();
+//        dd($data);
         $resources = request()->file('file');
-        $uploadController = new VrResourcesController();
+//        dd($resources);
+        $uploadController = new VRResourcesController();
         $record = $uploadController->upload($resources);
         $data['cover_id'] = $record->id;
-        $record = VrPages::create($data);
+        $record = VRPages::create($data);
         $data['record_id'] = $record->id;
-        VrPagesTranslations::create($data);
+        VRPagesTranslations::create($data);
         return redirect(route('app.pages.edit', $record->id));
     }
 
