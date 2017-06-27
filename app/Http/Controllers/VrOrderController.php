@@ -128,6 +128,15 @@ class VrOrderController extends Controller {
      * @return array
      */
 
+    public function reserv() {
+
+        $data = request()->all();
+        $time_start =  Carbon::parse($data['time'])->startOfDay();
+        $time_end = Carbon::parse($data['time'])->endOfDay();
+        return VrReservations::where('time', '>=' , $time_start )
+                                        ->where('time', '<=' , $time_end)->pluck('time')->toArray();
+
+    }
     private function getVRroomsWithcategory()
     {
         $pagesData = (new VRPages)->getTable();
@@ -137,6 +146,7 @@ class VrOrderController extends Controller {
             ->pluck("$pagesDataTrans.title", "$pagesData.id")->toArray());
 
     }
+
 
 
     public function getFormData()
