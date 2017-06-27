@@ -62,7 +62,6 @@ return [
 
     'virtual_room' => 'Vr patirtis',
     'time' => 'Laikas',
-    '' => ''
 
 
 
