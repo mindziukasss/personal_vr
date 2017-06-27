@@ -10,12 +10,6 @@
 
         @if($field['type'] == 'drop_down')
             @if(isset($record[$field['key']]))
-                {{--@if(isset($record[$field['key']]) && $field['key'] == 'user_id' )--}}
-                {{--<div class="form-group">--}}
-                {{--{{ Form::label($field['key'],$record[$field['key']])}}--}}
-                {{--</div>--}}
-                {{--@endif--}}
-
                 @if($field['key'] == 'language_code' || $field['key'] == 'category_id' || $field['key'] == 'status' ||
                 $field['key'] == 'time' || $field['key'] == 'virtual_room')
                     <div class="form-group">
@@ -124,8 +118,24 @@
             'change', function () {
                 window.location.href = "?language_code=" + $('#language_code').val();
 
-            }
-        )
+            });
+
+        var $time = $('#time');
+        var $virtual_room = $('#virtual_room');
+
+        if ($time.length > 0 && $virtual_room.length > 0) {
+
+            $time.bind('change', function () {
+                console.log($time.val())
+            });
+
+            $virtual_room.bind('change', function () {
+                console.log($virtual_room.val())
+            });
+
+        }
+
 
     </script>
 @endsection
+

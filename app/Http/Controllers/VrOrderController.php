@@ -91,6 +91,7 @@ class VrOrderController extends Controller {
         $config['titleForm'] = $id;
         $config['route'] = route('app.orders.edit', $id);
         $config['back'] = 'app.orders.index';
+
         return view('admin.create',$config);
 	}
 
@@ -167,14 +168,6 @@ class VrOrderController extends Controller {
             "options" => VrUsers::pluck('email', 'id')->toArray()
 
         ];
-
-        $config['fields'][] = [
-            "type" => "user",
-            "key" => "",
-            "options" => VrUsers::pluck('email', 'id')->toArray()
-
-        ];
-
 
         $config['fields'][] = [
             "type" => "drop_down",
