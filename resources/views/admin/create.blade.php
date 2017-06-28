@@ -98,6 +98,10 @@
                 </div>
 
             @endif
+
+        @elseif($field['type'] == 'reservations')
+            <div id="reservations"></div>
+            <div id="reservations-invisible" style="display: none;"></div>
         @endif
 
 
@@ -122,38 +126,34 @@
         var $virtual_room = $('#virtual_room');
 
 
-            function getAvailableHours() {
-                $.ajax({
-                    url: '{{ route('app.orders.reserv') }}',
-                    type: 'GET',
-                    data: {
-                        time: $time.val(),
-                        experience_id: $virtual_room.val()
-                    },
-                    success: function (response) {
-//                        $('#' + response.id).remove();
-//                        console.log(response)
-                    },
-                    error: function () {
-                        alert('ERROR')
-                    }
+        function getAvailableHours() {
+            $.ajax({
+                url: '{{ route('app.orders.reserv') }}',
+                type: 'GET',
+                data: {
+                    time: $time.val(),
+                    experience_id: $virtual_room.val()
+                },
+                success: function (response) {
 
-                });
-            }
-//           console.log($time.val(),($virtual_room.val()))
+//                    generateCheckBoxes
+//                      (prepareForCheckBox($time.val(), response));
+                    console.log(generateCheckBoxes($time.val(), response));
+                },
+                error: function () {
+                    alert('ERROR')
+                }
+
+            });
+        }
 
 
         if ($time.length > 0 && $virtual_room.length > 0) {
 
-            $time.bind('change', getAvailableHours)
-            $virtual_room.bind('change', getAvailableHours)
+            $time.bind('change', getAvailableHours);
+            $virtual_room.bind('change', getAvailableHours);
 
-            var list = prepareForCheckBox(new Date());
-            console.log(list);
-
-            function prepareForCheckBox(day) {
-                // reserved days from server
-                var reserved = [day + ' 17:00:00', day + ' 17:10:00'];
+            function prepareForCheckBox(day, reserved) {
 
                 // new date
                 var date = new Date(day + ' 00:00:00');
@@ -210,6 +210,38 @@
 
                 return availableTimes;
             }
+
+        }
+
+        function generateCheckBoxes(time, resp) {
+
+            var a = prepareForCheckBox(time, resp);
+            var checkboxes =  '';
+            var exp = $('#virtual_room').val();
+
+            a.forEach(function (entry) {
+
+                //ToDO check if entry is reserved, If yes then check and disable it else normal
+
+
+                if (entry.reserved === 1)
+                    checkboxes += '<input type="checkbox" name="' + exp + '[]" value="' + entry.id + '" checked disabled > ' + entry.title + '<br>';
+                else
+                    checkboxes += '<input type="checkbox" name="' + exp + '[]" value="' + entry.id + '">' + entry.title + '<br>';
+            });
+
+            $('#virtual_room').html(checkboxes);
+            //console.log(checkboxes);
+
+            $("input[name|='" + exp + "[]']").bind('click', function (e)
+            {
+                console.log($(e.currentTarget).val());
+
+                $('#reservations-invisible').append('<input id="' + $(this).attr('value') + '" type="checkbox" name="' + $(this).attr('name') + '" value="' + $(this).attr('value') + '" checked>');
+            });
+
+            //return console.log(entry)
+            //return  prepareForCheckBox(date, resp)
 
         }
 
