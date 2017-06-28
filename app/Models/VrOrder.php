@@ -20,9 +20,4 @@ class VrOrder extends CoreModel
     protected $fillable = ['id', 'status', 'user_id'];
 
 
-    public function getUserContact()
-    {
-        return $this->hasOne(VrUsers::class, 'user_id' , 'id');
-    }
-
 }

@@ -90,7 +90,7 @@
         @elseif($field['type'] == 'user_down')
             @if(isset($record[$field['key']]))
                 <div class="form-group">
-                    {{ Form::label($record[$field['key']]) }}
+                    {{ Form::label($user_email['email']) }}
                 </div>
             @else
                 <div class="form-group">
@@ -138,7 +138,7 @@
 
 //                    generateCheckBoxes
 //                      (prepareForCheckBox($time.val(), response));
-                  generateCheckBoxes($time.val(), response);
+                    generateCheckBoxes($time.val(), response);
                 },
                 error: function () {
                     alert('ERROR')
@@ -216,7 +216,7 @@
         function generateCheckBoxes(time, resp) {
 
             var a = prepareForCheckBox(time, resp);
-            var checkboxes =  '';
+            var checkboxes = '';
             var exp = $('#virtual_room').val();
 
             a.forEach(function (entry) {
@@ -231,10 +231,9 @@
             });
 
             $('#reservations').html(checkboxes);
-           
 
-            $("input[name|='" + exp + "[]']").bind('click', function (e)
-            {
+
+            $("input[name|='" + exp + "[]']").bind('click', function (e) {
                 console.log($(e.currentTarget).val());
 
                 $('#reservations-invisible').append('<input id="' + $(this).attr('value') + '" type="checkbox" name="' + $(this).attr('name') + '" value="' + $(this).attr('value') + '" checked>');

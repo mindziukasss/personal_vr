@@ -84,10 +84,10 @@ class VrOrderController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$record = VrOrder::find($id)->toArray();
-
+        $record = VrOrder::find($id)->toArray();
         $config = $this->getFormData();
         $config['record'] = $record;
+        $config['user_email'] = VRUsers::find(VrOrder::find($id)->user_id)->toArray();
         $config['titleForm'] = $id;
         $config['route'] = route('app.orders.edit', $id);
         $config['back'] = 'app.orders.index';
