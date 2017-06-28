@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 function getActiveLanguages()
 {
-    if (Schema::hasTable('vr_language_codes')) {
+    if (is_null(Schema::hasTable('vr_language_codes'))) {
         return "DB is empty";
     } else {
         $languages = VrLanguageCodes::where('is_active', 1)->get()->pluck('name', 'id')->toArray();
@@ -33,7 +33,7 @@ function getActiveLanguages()
 
 function getFrontendMenu ()
 {
-    if(Schema::hasTable('vr_menu')) {
+    if(is_null(Schema::hasTable('vr_menu'))) {
         return "DB is empty";
     }else {
         $data = VrMenu::where('vr_parent_id', null)->with(['submenu'])
@@ -47,7 +47,7 @@ function getFrontendMenu ()
 
 function getVRrooms ()
 {
-    if(Schema::hasTable('vr_categories_translations')) {
+    if(is_null(Schema::hasTable('vr_categories_translations'))) {
         return "DB is empty";
 
     }else {
