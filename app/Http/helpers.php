@@ -4,10 +4,11 @@
 use App\Models\VrLanguageCodes;
 use App\Models\VrMenu;
 use App\Models\VRPages;
+use Illuminate\Support\Facades\Schema;
 
 function getActiveLanguages()
 {
-    if (VrLanguageCodes::class == null) {
+    if (Schema::hasTable('vr_language_codes')) {
         return "DB is empty";
     } else {
         $languages = VrLanguageCodes::where('is_active', 1)->get()->pluck('name', 'id')->toArray();
@@ -32,7 +33,7 @@ function getActiveLanguages()
 
 function getFrontendMenu ()
 {
-    if(VrMenu::class == null ) {
+    if(Schema::hasTable('vr_menu')) {
         return "DB is empty";
     }else {
         $data = VrMenu::where('vr_parent_id', null)->with(['submenu'])
@@ -46,7 +47,7 @@ function getFrontendMenu ()
 
 function getVRrooms ()
 {
-    if(VRPages::class == null ) {
+    if(Schema::hasTable('vr_categories_translations')) {
         return "DB is empty";
 
     }else {
