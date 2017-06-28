@@ -138,7 +138,7 @@
 
 //                    generateCheckBoxes
 //                      (prepareForCheckBox($time.val(), response));
-                    console.log(generateCheckBoxes($time.val(), response));
+                  generateCheckBoxes($time.val(), response);
                 },
                 error: function () {
                     alert('ERROR')
@@ -230,8 +230,8 @@
                     checkboxes += '<input type="checkbox" name="' + exp + '[]" value="' + entry.id + '">' + entry.title + '<br>';
             });
 
-            $('#virtual_room').html(checkboxes);
-            //console.log(checkboxes);
+            $('#reservations').html(checkboxes);
+           
 
             $("input[name|='" + exp + "[]']").bind('click', function (e)
             {
@@ -239,9 +239,6 @@
 
                 $('#reservations-invisible').append('<input id="' + $(this).attr('value') + '" type="checkbox" name="' + $(this).attr('name') + '" value="' + $(this).attr('value') + '" checked>');
             });
-
-            //return console.log(entry)
-            //return  prepareForCheckBox(date, resp)
 
         }
 

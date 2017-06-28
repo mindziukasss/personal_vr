@@ -193,7 +193,7 @@ class VrOrderController extends Controller {
         ];
 
         $config['fields'][] = [
-            "type" => "reservation",
+            "type" => "reservations",
             "key" => "reservations",
         ];
 
