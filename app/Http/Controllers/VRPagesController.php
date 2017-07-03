@@ -120,6 +120,17 @@ class VRPagesController extends Controller
     public function update($id)
     {
         $data = request()->all();
+
+        if (request()->file('file')) {
+            $resources = request()->file('file');
+            $uploadFile = new VRResourcesController();
+            $record = $uploadFile->upload($resources);
+            $data['cover_id'] = $record->id;
+        }
+        elseif(isset($data["delete"]))
+        {
+            $data['cover_id'] = null;
+        }
         $record = VRPages::find($id);
         $record->update($data);
         $data['record_id'] = $id;
@@ -146,7 +157,8 @@ class VRPagesController extends Controller
 //        Simple delete
 //        $cover_id = DB::table('vr_pages')->where('id',$id)->value('cover_id');
 //        VrResources::where('id', $cover_id )->delete();
-        VRResources::find(VRPages::find($id)->cover_id)->delete();
+        if (VRPages::find($id)->cover_id === null)
+            VRResources::find(VRPages::find($id)->cover_id)->delete();
         VrPages::destroy($id);
 
         return ["success" => true, "id" => $id];
@@ -200,6 +212,19 @@ class VRPagesController extends Controller
             "key" => "cover_id",
             "file" => VrResources::pluck('path', 'id')->toArray()
         ];
+
+
+        $config['fields'][] =
+            [
+                "type" => "check_box",
+                "key" => "delete",
+                "options" => [[
+                    "name" => "delete",
+                    "value" => "true",
+                    "title" => trans('app.delete image')
+                    
+                ]]
+            ];
 
 
         return $config;
