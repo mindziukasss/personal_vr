@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\VRCategories;
@@ -20,7 +21,7 @@ class VRPagesController extends Controller
      */
 
     public function index()
-    {   
+    {
         $config['tableName'] = trans('app.adminPages');
         $config['list'] = VRPages::get()->toArray();
         $config['route'] = route('app.pages.create');
@@ -58,15 +59,27 @@ class VRPagesController extends Controller
     public function store()
     {
         $data = request()->all();
-//        dd($data);
         $resources = request()->file('file');
-//        dd($resources);
-        $uploadController = new VRResourcesController();
-        $record = $uploadController->upload($resources);
-        $data['cover_id'] = $record->id;
-        $record = VRPages::create($data);
-        $data['record_id'] = $record->id;
-        VRPagesTranslations::create($data);
+        if ($resources == null) {
+            if ($data['cover_id'] > 0) {
+                $record = VRPages::create($data);
+                $data['cover_id'] = $record->id;
+                $data['record_id'] = $record->id;
+                VRPagesTranslations::create($data);
+            } else {
+                $record = VRPages::create($data);
+                $data['record_id'] = $record->id;
+                VRPagesTranslations::create($data);
+            }
+        } else {
+            $uploadController = new VRResourcesController();
+            $record = $uploadController->upload($resources);
+            $data['cover_id'] = $record->id;
+            $record = VRPages::create($data);
+            $data['record_id'] = $record->id;
+            VRPagesTranslations::create($data);
+        }
+
         return redirect(route('app.pages.edit', $record->id));
     }
 
@@ -107,7 +120,7 @@ class VRPagesController extends Controller
         $config['route'] = route('app.pages.edit', $id);
         $config['back'] = 'app.pages.index';
 
-        return view('admin.create',$config);
+        return view('admin.create', $config);
     }
 
     /**
@@ -126,9 +139,7 @@ class VRPagesController extends Controller
             $uploadFile = new VRResourcesController();
             $record = $uploadFile->upload($resources);
             $data['cover_id'] = $record->id;
-        }
-        elseif(isset($data["delete"]))
-        {
+        } elseif (isset($data["delete"])) {
             $data['cover_id'] = null;
         }
         $record = VRPages::find($id);
@@ -137,7 +148,7 @@ class VRPagesController extends Controller
         VrPagesTranslations::updateOrCreate([
             'record_id' => $id,
             'language_code' => $data['language_code']
-            ],$data);
+        ], $data);
         return redirect(route('app.pages.edit', $record->id));
 
     }
@@ -181,7 +192,7 @@ class VRPagesController extends Controller
             "type" => "drop_down",
             "key" => "category_id",
             "options" => VrCategoriesTranslations::where('language_code', $lang)
-                ->pluck('name','record_id')
+                ->pluck('name', 'record_id')
         ];
 
         $config['fields'][] = [
@@ -210,21 +221,26 @@ class VRPagesController extends Controller
         $config['fields'][] = [
             "type" => "file",
             "key" => "cover_id",
-            "file" => VrResources::pluck('path', 'id')->toArray()
+            "file" => VRResources::pluck('path', 'id')->toArray()
         ];
 
+        $config['fields'][] = [
+            "type" => "check_box",
+            "key" => "delete",
+            "options" => [[
+                "name" => "delete",
+                "value" => "true",
+                "title" => trans('app.delete image')
 
-        $config['fields'][] =
-            [
-                "type" => "check_box",
-                "key" => "delete",
-                "options" => [[
-                    "name" => "delete",
-                    "value" => "true",
-                    "title" => trans('app.delete image')
-                    
-                ]]
-            ];
+            ]]
+        ];
+
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "cover_id",
+            "options" => VRResources::pluck('path', 'id')->toArray()
+
+        ];
 
 
         return $config;
