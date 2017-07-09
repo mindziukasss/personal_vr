@@ -24,7 +24,7 @@ return [
     'adminOrders' => 'Užsakymų sąrašas',
 
     'newRecord' => 'Sukurk naują įrašą',
-    'language_code' => 'Išsrinkite',
+    'language_code' => 'Kalbos',
     'save' => 'Išsaugoti',
     'new_record' => 'Sukurk įrašą į',
 
@@ -63,7 +63,12 @@ return [
     'virtual_room' => 'Vr patirtis',
     'time' => 'Laikas',
 
-    'delete image' => 'Trinti nuotrauką'
+    'delete image' => 'Trinti nuotrauką',
+    'is_active' => 'Kalbų valdymas',
+    'new_window' => 'At.naujame lange',
+    'translation' => 'Vertimas',
+    'image' => 'Nuotrakos',
+    'rol' => 'Rolės',
 
 
 

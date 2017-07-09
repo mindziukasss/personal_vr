@@ -15,15 +15,15 @@
             <tr>
                 @foreach($list[0] as $key => $value)
                     @if (!in_array($key, $ignore))
-                        <th>{{$key}}</th>
+                        <th>{{ trans('app.' . $key)}}</th>
                     @endif
                 @endforeach
                 @if(isset($edit))
-                    <th>Edit</th>
+                    {{--<th>Edit</th>--}}
                 @endif
 
                 @if(isset($delete))
-                    <th>Delete</th>
+                    {{--<th>Delete</th>--}}
                 @endif
 
             </tr>
