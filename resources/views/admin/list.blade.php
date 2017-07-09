@@ -14,7 +14,9 @@
         <table class="table table-condensed">
             <tr>
                 @foreach($list[0] as $key => $value)
-                    <th>{{$key}}</th>
+                    @if (!in_array($key, $ignore))
+                        <th>{{$key}}</th>
+                    @endif
                 @endforeach
                 @if(isset($edit))
                     <th>Edit</th>
@@ -70,7 +72,9 @@
                                 <td>Nofoto</td>
                             @endif
                         @else
-                            <td>{{$value}}</td>
+                            @if(!in_array($key, $ignore))
+                                <td>{{$value}}</td>
+                            @endif
                         @endif
 
                     @endforeach

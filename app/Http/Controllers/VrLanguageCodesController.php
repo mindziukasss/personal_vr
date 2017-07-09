@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\VrLanguageCodes;
-use Illuminate\Routing\Controller;
 
 class VrLanguageCodesController extends Controller {
 
@@ -16,6 +15,8 @@ class VrLanguageCodesController extends Controller {
 		$config['tableName'] = trans('app.adminLanguagesTable');
 	    $config['list'] = VrLanguageCodes::get()->toArray();
 	    $config['callToAction']= 'app.languages.edit';
+        $baseController = new Controller();
+        $config['ignore'] = $baseController->ignore();
 		return view('admin.list',$config);
 	}
 

@@ -5,7 +5,6 @@ use App\Models\VrConnUserRoles;
 use App\Models\VrResources;
 use App\Models\VrRoles;
 use App\Models\VrUsers;
-use Illuminate\Routing\Controller;
 use Ramsey\Uuid\Uuid;
 
 class VrUsersController extends Controller
@@ -25,6 +24,9 @@ class VrUsersController extends Controller
         $config['create'] = 'app.users.create';
         $config['edit'] = 'app.users.edit';
         $config['delete'] = 'app.users.destroy';
+
+        $baseController = new Controller();
+        $config['ignore'] = $baseController->ignore();
 
         return view('admin.list', $config);
     }

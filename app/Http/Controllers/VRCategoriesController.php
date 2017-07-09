@@ -3,7 +3,6 @@
 
 use App\Models\VrCategories;
 use App\Models\VrCategoriesTranslations;
-use Illuminate\Routing\Controller;
 use Ramsey\Uuid\Uuid;
 
 class VrCategoriesController extends Controller
@@ -25,6 +24,8 @@ class VrCategoriesController extends Controller
         $config['create'] = 'app.categories.create';
         $config['edit'] = 'app.categories.edit';
         $config['delete'] = 'app.categories.destroy';
+        $baseController = new Controller();
+        $config['ignore'] = $baseController->ignore();
         return view('admin.list', $config);
 
     }

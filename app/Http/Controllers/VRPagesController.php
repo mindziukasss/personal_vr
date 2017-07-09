@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VRCategories;
+
 use App\Models\VrCategoriesTranslations;
 use App\Models\VRPages;
 use App\Models\VRPagesTranslations;
 use App\Models\VRResources;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
+
 
 class VRPagesController extends Controller
 {
@@ -28,6 +27,8 @@ class VRPagesController extends Controller
         $config['create'] = 'app.pages.create';
         $config['edit'] = 'app.pages.edit';
         $config['delete'] = 'app.pages.destroy';
+        $baseController = new Controller();
+        $config['ignore'] = $baseController->ignore();
 
 
         return view('admin.list', $config);

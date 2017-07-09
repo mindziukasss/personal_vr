@@ -8,7 +8,6 @@ use App\Models\VrUsers;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use DateTimeZone;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 
 class VrOrderController extends Controller {
@@ -27,6 +26,8 @@ class VrOrderController extends Controller {
         $config['edit'] = 'app.orders.edit';
         $config['create'] = 'app.orders.create';
         $config['delete'] = 'app.orders.destroy';
+        $baseController = new Controller();
+        $config['ignore'] = $baseController->ignore();
         return view('admin.list', $config);
 	}
 

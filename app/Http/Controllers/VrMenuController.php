@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VrMenuTranslations;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\VrMenu;
-use Illuminate\Support\Facades\DB;
-use Session;
 
 
 class VrMenuController extends Controller
@@ -27,6 +23,8 @@ class VrMenuController extends Controller
         $config['create'] = 'app.menu.create';
         $config['edit'] = 'app.menu.edit';
         $config['delete'] = 'app.menu.destroy';
+        $baseController = new Controller();
+        $config['ignore'] = $baseController->ignore();
         return view('admin.list', $config);
     }
 
