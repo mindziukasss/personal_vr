@@ -69,6 +69,8 @@ return [
     'translation' => 'Vertimas',
     'image' => 'Nuotrakos',
     'rol' => 'Rolės',
+    'yes' => 'Taip',
+    'no' => 'Ne'
 
 
 

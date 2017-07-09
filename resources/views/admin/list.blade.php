@@ -71,6 +71,12 @@
                             @else
                                 <td>Nofoto</td>
                             @endif
+                        @elseif($key == 'new_window')
+                            @if($value == '1' )
+                                <td>{{trans('app.yes')}}</td>
+                            @else
+                                <td>{{trans('app.no')}}</td>
+                            @endif
                         @else
                             @if(!in_array($key, $ignore))
                                 <td>{{$value}}</td>
