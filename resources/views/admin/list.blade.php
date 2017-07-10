@@ -62,6 +62,10 @@
                                 <td>{{$value['name'] . ' ' . $value['language_code']}}</td>
                             @endif
 
+                        @elseif($key == 'vr_parent_id' && $value > null )
+                            @foreach($vr_parent_name as $name)
+                                <td>{{$name['name']}}</td>
+                                @endforeach
                         @elseif($key == 'rol')
                             <td>{{ $value['role_id'] }}</td>
 
