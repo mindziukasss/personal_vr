@@ -27,8 +27,10 @@ class VRPagesController extends Controller
         $config['create'] = 'app.pages.create';
         $config['edit'] = 'app.pages.edit';
         $config['delete'] = 'app.pages.destroy';
+        $config['show'] = 'app.pages.show';
         $baseController = new Controller();
         $config['ignore'] = $baseController->ignore();
+
         return view('admin.list', $config);
     }
 
@@ -91,7 +93,14 @@ class VRPagesController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = VRPages::find($id)->toArray();
+        $config['title'] = $data['translation']['title'];
+        $config['description_short'] = $data['translation']['description_short'];
+        $config['description_long'] = $data['translation']['description_long'];
+        $config['path'] = $data['image']['path'];
+        $config['edit'] =  route('app.pages.edit', $id);
+        $config['back'] = route('app.pages.index');
+       return view ('admin.pageShow', $config);
     }
 
     /**

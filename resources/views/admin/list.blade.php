@@ -18,14 +18,6 @@
                         <th>{{ trans('app.' . $key)}}</th>
                     @endif
                 @endforeach
-                @if(isset($edit))
-                    {{--<th>Edit</th>--}}
-                @endif
-
-                @if(isset($delete))
-                    {{--<th>Delete</th>--}}
-                @endif
-
             </tr>
             @foreach($list as $record)
                 <tr id="{{$record['id']}}">
@@ -95,12 +87,18 @@
 
                     @endforeach
 
+                    @if(isset($show) )
+                        <td>
+                            <td><a href="{{route($show,$record['id'])}}">
+                                    <button type="button" class="btn btn-success">{{  trans('app.show')}}</button>
+                                </a></td>
+                        </td>
+                    @endif
                     @if(isset($edit) )
                         <td><a href="{{route($edit,$record['id'])}}">
                                 <button type="button" class="btn btn-primary">{{  trans('app.edit')}}</button>
                             </a></td>
                     @endif
-
                     @if(isset($edit) )
                         <td>
                             <button onclick="deleteItem( '{{ route($delete, $record['id']) }}' )"

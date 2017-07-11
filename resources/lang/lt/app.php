@@ -13,6 +13,7 @@ return [
     'back'=> 'Atgal',
     'edit' => 'Atnaujinti',
     'delete' => 'Trinti',
+    'show' => 'Rodyti',
 
     'disable' => 'Išjungti',
     'active' => 'Įjungti',
