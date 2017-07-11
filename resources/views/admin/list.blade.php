@@ -69,6 +69,9 @@
 
                         @elseif($key == 'categories')
                             <td>{{($value[0]['translation']['name'])}}</td>
+
+                        @elseif($key == 'user')
+                            <td>{{$value['name']}}</td>
                         @elseif($key == 'rol')
                             <td>{{ $value['role_id'] }}</td>
 

@@ -5,6 +5,7 @@ return [
     'pages' => 'Puslapiai',
     'categories' => 'Kategorijos',
     'users' => 'Vartotojai',
+    'user' => 'Vartotojai',
     'orders' => 'Užsakymai',
     'admin_panel' => 'Administratoriaus meniu',
     'no_data' => 'Duomenų nėra',

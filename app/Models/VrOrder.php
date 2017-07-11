@@ -19,5 +19,12 @@ class VrOrder extends CoreModel
      */
     protected $fillable = ['id', 'status', 'user_id'];
 
+    protected $with = ['user'];
+
+
+    public function user ()
+    {
+        return $this->belongsTo(VRUsers::class);
+    }
 
 }

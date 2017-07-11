@@ -20,7 +20,8 @@ class Controller extends BaseController
                 'count',
                 'vr_parent_id',
                 'category_id',
-                'cover_id'];
+                'cover_id',
+                'user_id'];
        return $ignore;
     }
 }
