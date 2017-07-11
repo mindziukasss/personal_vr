@@ -13,7 +13,7 @@ class Controller extends BaseController
 
     public function ignore()
     {
-       $ignore= ['created_at', 'updated_at', 'deleted_at', 'id', 'count'];
+       $ignore= ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'vr_parent_id'];
        return $ignore;
     }
 }

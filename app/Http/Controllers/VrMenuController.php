@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VrMenuTranslations;
 use App\Models\VrMenu;
+use App\Models\VrUsers;
 
 
 class VrMenuController extends Controller
@@ -19,9 +20,12 @@ class VrMenuController extends Controller
     {
         $config['tableName'] = trans('app.adminMenu');
         $config['list'] = VrMenu::get()->toArray();
-        $parent = VrMenu::get()->pluck('vr_parent_id','record_id')->toArray();
-        $config['vr_parent_name'] = VrMenuTranslations::where('record_id', $parent)
-                                                                ->get()->toArray();
+        //Not good works
+//        $parent = VrMenu::get()->pluck('vr_parent_id','record_id')->toArray();
+//        $lang = VrMenuTranslations::get()->toArray();
+//        $config['vr_parent_name'] = VrMenuTranslations::where('record_id', $parent)
+//                                                        ->where('language_code', $lang)
+//                                                                ->get()->toArray();
         $config['route'] = route('app.menu.create');
         $config['create'] = 'app.menu.create';
         $config['edit'] = 'app.menu.edit';
