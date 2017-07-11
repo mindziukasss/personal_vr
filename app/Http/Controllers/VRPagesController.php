@@ -29,8 +29,6 @@ class VRPagesController extends Controller
         $config['delete'] = 'app.pages.destroy';
         $baseController = new Controller();
         $config['ignore'] = $baseController->ignore();
-
-
         return view('admin.list', $config);
     }
 
