@@ -87,11 +87,18 @@
 
                     @endforeach
 
+                    @if(isset($resource) )
+                        <td>
+                        <td><a href="{{route($resource,$record['id'])}}">
+                                <button type="button" class="btn btn-success">{{  trans('app.resource')}}</button>
+                            </a></td>
+                        </td>
+                    @endif
                     @if(isset($show) )
                         <td>
-                            <td><a href="{{route($show,$record['id'])}}">
-                                    <button type="button" class="btn btn-success">{{  trans('app.show')}}</button>
-                                </a></td>
+                        <td><a href="{{route($show,$record['id'])}}">
+                                <button type="button" class="btn btn-success">{{  trans('app.show')}}</button>
+                            </a></td>
                         </td>
                     @endif
                     @if(isset($edit) )
@@ -99,7 +106,7 @@
                                 <button type="button" class="btn btn-primary">{{  trans('app.edit')}}</button>
                             </a></td>
                     @endif
-                    @if(isset($edit) )
+                    @if(isset($delete) )
                         <td>
                             <button onclick="deleteItem( '{{ route($delete, $record['id']) }}' )"
                                     class="btn btn-danger">{{ trans('app.delete')}}</button>

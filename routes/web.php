@@ -16,10 +16,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], function () {
-    Route::get('/', function () {   
-    return view('admin.core');
+    Route::get('/', function () {
+        return view('admin.core');
     });
 
     Route::group(['prefix' => 'menu'], function () {
@@ -35,6 +34,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
             Route::post('/edit', ['uses' => 'VrMenuController@update']);
             Route::delete('/delete', ['as' => 'app.menu.destroy', 'uses' => 'VrMenuController@destroy']);
         });
+
+    });
+    Route::group(['prefix' => 'resources'], function () {
+
+        Route::get('/create/{VRPages}', ['as' => 'app.resources.create', 'uses' => 'VRResourcesController@create']);
+        Route::post('/create/{VRPages}', ['uses' => 'VRResourcesController@store']);
 
     });
 
@@ -105,9 +110,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
 });
 
 
-Route::group(['prefix' => '/'], function (){
+Route::group(['prefix' => '/'], function () {
     Route::get('/', ['as' => 'app.user.index', 'uses' => 'FrontEndController@index']);
-        Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
+    Route::get('/{lang}/pages/{slug}', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);
 
 //    Route::group(['prefix' => '{id}'], function (){
 //        Route::get('/', ['as' => 'app.user.show', 'uses' => 'FrontEndController@pageShow']);

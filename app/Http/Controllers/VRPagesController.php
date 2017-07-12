@@ -31,6 +31,7 @@ class VRPagesController extends Controller
         $config['show'] = 'app.pages.show';
         $baseController = new Controller();
         $config['ignore'] = $baseController->ignore();
+        $config['resource'] = 'app.resources.create';
 
         return view('admin.list', $config);
     }
@@ -62,34 +63,25 @@ class VRPagesController extends Controller
     {
         $data = request()->all();
         $resources = request()->file('file');
-//        if ($resources == null) {
-//            if (isset($data['cover_id'])) {
-//                $record = VRPages::create($data);
-//                $data['cover_id'] = $record->id;
-//                $data['record_id'] = $record->id;
-//                VRPagesTranslations::create($data);
-//            } else {
-//                $record = VRPages::create($data);
-//                $data['record_id'] = $record->id;
-//                VRPagesTranslations::create($data);
-//            }
-//        } else {
-//            $uploadController = new VRResourcesController();
-//            $record = $uploadController->upload($resources);
-//            $data['cover_id'] = $record->id;
-//            $record = VRPages::create($data);
-//            $data['record_id'] = $record->id;
-//            VRPagesTranslations::create($data);
-//        }
-        $record = VRPages::create($data);
-        $uploadController = new VRResourcesController();
-        $resource = $uploadController->upload($resources);
-        $data['record_id'] = $record->id;
-        VRPagesTranslations::create($data);
-        $data['page_id'] = $record->id;
-        $data['resource_id'] = $resource->id;
-        VrConnPagesResources::create($data);
-
+        if ($resources == null) {
+            if (isset($data['cover_id'])) {
+                $record = VRPages::create($data);
+                $data['cover_id'] = $record->id;
+                $data['record_id'] = $record->id;
+                VRPagesTranslations::create($data);
+            } else {
+                $record = VRPages::create($data);
+                $data['record_id'] = $record->id;
+                VRPagesTranslations::create($data);
+            }
+        } else {
+            $uploadController = new VRResourcesController();
+            $record = $uploadController->upload($resources);
+            $data['cover_id'] = $record->id;
+            $record = VRPages::create($data);
+            $data['record_id'] = $record->id;
+            VRPagesTranslations::create($data);
+        }
 
         return redirect(route('app.pages.edit', $record->id));
     }
@@ -110,6 +102,7 @@ class VRPagesController extends Controller
         $config['path'] = $data['image']['path'];
         $config['edit'] =  route('app.pages.edit', $id);
         $config['back'] = route('app.pages.index');
+
        return view ('admin.pageShow', $config);
     }
 
@@ -260,11 +253,11 @@ class VRPagesController extends Controller
 
         ];
 
-        $config['fields'][] = [
-            "type" => "file",
-            "key" => "resource_id",
-            "file" => VRResources::pluck('path', 'id')->toArray()
-        ];
+//        $config['fields'][] = [
+//            "type" => "file",
+//            "key" => "resource_id",
+//            "file" => VRResources::pluck('path', 'id')->toArray()
+//        ];
 
 
         return $config;
