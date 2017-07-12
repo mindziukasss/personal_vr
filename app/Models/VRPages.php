@@ -42,4 +42,17 @@ class VrPages extends CoreModel
     {
         return $this->hasMany(VRCategories::class, 'id', 'category_id');
     }
+
+
+    public function resources()
+    {
+        return $this->belongsToMany(VRResources::class,
+            'vr_connections_pages_resources', 'resource_id','page_id');
+    }
+
+    public function resourcesConn()
+    {
+        return $this->hasOne(VrConnPagesResources::class,
+            'page_id', 'id');
+    }
 }
