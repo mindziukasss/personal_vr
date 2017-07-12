@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\VrCategoriesTranslations;
+use App\Models\VrConnPagesResources;
 use App\Models\VRPages;
 use App\Models\VRPagesTranslations;
 use App\Models\VRResources;
@@ -61,25 +62,34 @@ class VRPagesController extends Controller
     {
         $data = request()->all();
         $resources = request()->file('file');
-        if ($resources == null) {
-            if ($data['cover_id'] > 0) {
-                $record = VRPages::create($data);
-                $data['cover_id'] = $record->id;
-                $data['record_id'] = $record->id;
-                VRPagesTranslations::create($data);
-            } else {
-                $record = VRPages::create($data);
-                $data['record_id'] = $record->id;
-                VRPagesTranslations::create($data);
-            }
-        } else {
-            $uploadController = new VRResourcesController();
-            $record = $uploadController->upload($resources);
-            $data['cover_id'] = $record->id;
-            $record = VRPages::create($data);
-            $data['record_id'] = $record->id;
-            VRPagesTranslations::create($data);
-        }
+//        if ($resources == null) {
+//            if (isset($data['cover_id'])) {
+//                $record = VRPages::create($data);
+//                $data['cover_id'] = $record->id;
+//                $data['record_id'] = $record->id;
+//                VRPagesTranslations::create($data);
+//            } else {
+//                $record = VRPages::create($data);
+//                $data['record_id'] = $record->id;
+//                VRPagesTranslations::create($data);
+//            }
+//        } else {
+//            $uploadController = new VRResourcesController();
+//            $record = $uploadController->upload($resources);
+//            $data['cover_id'] = $record->id;
+//            $record = VRPages::create($data);
+//            $data['record_id'] = $record->id;
+//            VRPagesTranslations::create($data);
+//        }
+        $record = VRPages::create($data);
+        $uploadController = new VRResourcesController();
+        $resource = $uploadController->upload($resources);
+        $data['record_id'] = $record->id;
+        VRPagesTranslations::create($data);
+        $data['page_id'] = $record->id;
+        $data['resource_id'] = $resource->id;
+        VrConnPagesResources::create($data);
+
 
         return redirect(route('app.pages.edit', $record->id));
     }
@@ -248,6 +258,12 @@ class VRPagesController extends Controller
             "key" => "cover_id",
             "options" => VRResources::pluck('path', 'id')->toArray()
 
+        ];
+
+        $config['fields'][] = [
+            "type" => "file",
+            "key" => "resource_id",
+            "file" => VRResources::pluck('path', 'id')->toArray()
         ];
 
 
