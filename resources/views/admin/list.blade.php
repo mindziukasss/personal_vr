@@ -89,22 +89,28 @@
 
                     @if(isset($resource) )
                         <td>
-                        <td><a href="{{route($resource,$record['id'])}}">
-                                <button type="button" class="btn btn-success">{{  trans('app.resource')}}</button>
-                            </a></td>
+                            {!! Form::open(['route' => array('app.resources.create', $record['id']), 'files' => true]) !!}
+
+                            <label class="btn btn-primary btn-sm btn-file">
+                                <i class="fa fa-upload fm-sm" aria-hidden="true"></i> Create new resource
+                                <input type="file" multiple onchange="this.form.submit()" name="files[]" hidden>
+                            </label>
+                            {!! Form::close() !!}
                         </td>
                     @endif
                     @if(isset($show) )
                         <td>
-                        <td><a href="{{route($show,$record['id'])}}">
+                            <a href="{{route($show,$record['id'])}}">
                                 <button type="button" class="btn btn-success">{{  trans('app.show')}}</button>
-                            </a></td>
+                            </a>
                         </td>
                     @endif
                     @if(isset($edit) )
-                        <td><a href="{{route($edit,$record['id'])}}">
+                        <td>
+                            <a href="{{route($edit,$record['id'])}}">
                                 <button type="button" class="btn btn-primary">{{  trans('app.edit')}}</button>
-                            </a></td>
+                            </a>
+                        </td>
                     @endif
                     @if(isset($delete) )
                         <td>

@@ -45,9 +45,9 @@ class VRResourcesController extends Controller
      *
      * @return Response
      */
-    public function create(VRPages $VRPages)
+    public function create()
     {
-        return view('admin.resource', compact('VRPages'));
+        //
     }
 
     /**
