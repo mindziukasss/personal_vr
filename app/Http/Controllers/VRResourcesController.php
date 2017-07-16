@@ -125,7 +125,13 @@ class VRResourcesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (VRResources::destroy($id) and VrConnPagesResources::where('resource_id', $id)->delete())
+        {
+            return json_encode(["success" => true, "id" => $id]);
+        }elseif(VRResources::destroy($id))
+        {
+            return json_encode(["success" => true, "id" => $id]);
+        }
     }
 
 }

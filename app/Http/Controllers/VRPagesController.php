@@ -100,10 +100,11 @@ class VRPagesController extends Controller
         $config['description_long'] = $data['translation']['description_long'];
         $config['path'] = $data['image']['path'];
         $config['files'] = $data['resources_conn'];
-        $config['edit'] =  route('app.pages.edit', $id);
+        $config['edit'] = route('app.pages.edit', $id);
         $config['back'] = route('app.pages.index');
+        $config['delete'] = 'app.resources.destroy';
 
-       return view ('admin.pageShow', $config);
+        return view('admin.pageShow', $config);
     }
 
     /**
@@ -179,8 +180,9 @@ class VRPagesController extends Controller
 //        Simple delete
 //        $cover_id = DB::table('vr_pages')->where('id',$id)->value('cover_id');
 //        VrResources::where('id', $cover_id )->delete();
-        if (VRPages::find($id)->cover_id === null)
+        if (VRPages::find($id)->cover_id === 0)
             VRResources::find(VRPages::find($id)->cover_id)->delete();
+        VrConnPagesResources::where('page_id', $id)->delete();
         VrPages::destroy($id);
 
         return ["success" => true, "id" => $id];

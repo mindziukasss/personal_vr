@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user-check']], func
 
         Route::get('/create/{VRPages}', ['as' => 'app.resources.create', 'uses' => 'VRResourcesController@create']);
         Route::post('/create/{VRPages}', ['uses' => 'VRResourcesController@store']);
+        Route::delete('/delete/{VRPages}', ['as' => 'app.resources.destroy', 'uses' => 'VRResourcesController@destroy']);
 
     });
 
