@@ -99,6 +99,7 @@ class VRPagesController extends Controller
         $config['description_short'] = $data['translation']['description_short'];
         $config['description_long'] = $data['translation']['description_long'];
         $config['path'] = $data['image']['path'];
+        $config['files'] = $data['resources_conn'];
         $config['edit'] =  route('app.pages.edit', $id);
         $config['back'] = route('app.pages.index');
 

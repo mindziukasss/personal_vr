@@ -53,6 +53,6 @@ class VrPages extends CoreModel
     public function resourcesConn()
     {
         return $this->hasMany(VrConnPagesResources::class,
-            'page_id', 'id');
+            'page_id', 'id')->with(['files']);
     }
 }

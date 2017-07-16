@@ -21,4 +21,9 @@ class VrConnPagesResources extends Model
      * @var array
      */
     protected $fillable = ['resource_id', 'page_id'];
+
+    public function files()
+    {
+      return $this->hasMany(VRResources::class,'id', 'resource_id');
+    }
 }
