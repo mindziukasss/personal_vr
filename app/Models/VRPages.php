@@ -20,7 +20,7 @@ class VrPages extends CoreModel
     protected $fillable = ['id', 'category_id', 'cover_id'];
 
 
-    protected $with = ['translation', 'image', 'categories'];
+    protected $with = ['translation', 'image', 'categories', 'resourcesConn'];
 
     public function translation ()
     {
@@ -52,7 +52,7 @@ class VrPages extends CoreModel
 
     public function resourcesConn()
     {
-        return $this->hasOne(VrConnPagesResources::class,
+        return $this->hasMany(VrConnPagesResources::class,
             'page_id', 'id');
     }
 }

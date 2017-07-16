@@ -72,7 +72,9 @@ return [
     'image' => 'Titulinė nuotraka',
     'rol' => 'Rolės',
     'yes' => 'Taip',
-    'no' => 'Ne'
+    'no' => 'Ne',
+
+    'resources_conn' => "Duomenų skč.",
 
 
 

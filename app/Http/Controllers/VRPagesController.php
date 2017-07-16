@@ -32,7 +32,6 @@ class VRPagesController extends Controller
         $baseController = new Controller();
         $config['ignore'] = $baseController->ignore();
         $config['resource'] = 'app.resources.create';
-
         return view('admin.list', $config);
     }
 

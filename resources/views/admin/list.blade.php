@@ -73,6 +73,12 @@
                             @else
                                 <td>Nofoto</td>
                             @endif
+                        @elseif($key == 'resources_conn')
+                            @if(isset($value) > null)
+                                <td>{{count($value)}}</td>
+                            @else
+                                <td>0</td>
+                            @endif
                         @elseif($key == 'new_window')
                             @if($value == '1' )
                                 <td>{{trans('app.yes')}}</td>
