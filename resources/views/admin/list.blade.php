@@ -2,7 +2,7 @@
 @section('content')
 
     <div>
-        <h2>{{$tableName}}</h2>
+        <h1>{{$tableName}}</h1>
     </div>
     <div>
         @if(isset($create))
@@ -15,7 +15,7 @@
             <tr>
                 @foreach($list[0] as $key => $value)
                     @if (!in_array($key, $ignore))
-                        <th>{{ trans('app.' . $key)}}</th>
+                        <th id="center">{{ trans('app.' . $key)}}</th>
                     @endif
                 @endforeach
             </tr>
@@ -24,7 +24,7 @@
 
                     @foreach($record as $key=> $value)
                         @if($key == 'is_active')
-                            <td>
+                            <td align="center">
                                 @if($value == 1)
                                     <button onclick="toggleActive( '{{route($callToAction, $record['id'])}}', 0)"
                                             type="button"
@@ -49,9 +49,9 @@
 
                         @elseif($key == 'translation')
                             @if(isset($value['title']))
-                                <td>{{$value['title'] . ' ' . $value['language_code']}}</td>
+                                <td align="center">{{$value['title'] . ' ' . $value['language_code']}}</td>
                             @else
-                                <td>{{$value['name'] . ' ' . $value['language_code']}}</td>
+                                <td align="center">{{$value['name'] . ' ' . $value['language_code']}}</td>
                             @endif
 
                             {{--@elseif($key == 'vr_parent_id' && $value > null )--}}
@@ -60,66 +60,63 @@
                             {{--@endforeach--}}
 
                         @elseif($key == 'categories')
-                            <td>{{($value[0]['translation']['name'])}}</td>
+                            <td align="center">{{($value[0]['translation']['name'])}}</td>
 
                         @elseif($key == 'user')
-                            <td>{{$value['name']}}</td>
+                            <td align="center">{{$value['name']}}</td>
                         @elseif($key == 'rol')
-                            <td>{{ $value['role_id'] }}</td>
+                            <td align="center">{{ $value['role_id'] }}</td>
 
                         @elseif($key == 'image')
                             @if(isset($value['path']))
-                                <td><img src="{{ $value['path'] }}" height="25" width="30"></td>
+                                <td align="center"><img src="{{ $value['path'] }}" height="25" width="30"></td>
                             @else
-                                <td>Nofoto</td>
+                                <td align="center">Nofoto</td>
                             @endif
                         @elseif($key == 'resources_conn')
                             @if(isset($value) > null)
-                                <td>{{count($value)}}</td>
+                                <td align="center">{{count($value)}}</td>
                             @else
-                                <td>0</td>
+                                <td align="center">0</td>
                             @endif
                         @elseif($key == 'new_window')
                             @if($value == '1' )
-                                <td>{{trans('app.yes')}}</td>
+                                <td align="center">{{trans('app.yes')}}</td>
                             @else
-                                <td>{{trans('app.no')}}</td>
+                                <td align="center">{{trans('app.no')}}</td>
                             @endif
                         @else
                             @if(!in_array($key, $ignore))
-                                <td>{{$value}}</td>
+                                <td align="center">{{$value}}</td>
                             @endif
                         @endif
 
                     @endforeach
 
                     @if(isset($resource) )
-                        <td>
-                            {!! Form::open(['route' => array('app.resources.create', $record['id']), 'files' => true]) !!}
-
-                            <label class="btn btn-primary btn-sm btn-file">
-                                <i class="fa fa-upload fm-sm" aria-hidden="true"></i> Create new resource
-                                <input type="file" multiple onchange="this.form.submit()" name="files[]" hidden>
-                            </label>
+                        <td align="center">
+                            {!! Form::open(['route' => ['app.resources.create', $record['id']], 'files' => true]) !!}
+                            <input type="file" multiple onchange="this.form.submit()" name="files[]" hidden
+                                   class="btn btn-primary btn-sm btn-file">
                             {!! Form::close() !!}
                         </td>
                     @endif
                     @if(isset($show) )
-                        <td>
+                        <td align="center">
                             <a href="{{route($show,$record['id'])}}">
                                 <button type="button" class="btn btn-success">{{  trans('app.show')}}</button>
                             </a>
                         </td>
                     @endif
                     @if(isset($edit) )
-                        <td>
+                        <td align="center">
                             <a href="{{route($edit,$record['id'])}}">
                                 <button type="button" class="btn btn-primary">{{  trans('app.edit')}}</button>
                             </a>
                         </td>
                     @endif
                     @if(isset($delete) )
-                        <td>
+                        <td align="center">
                             <button onclick="deleteItem( '{{ route($delete, $record['id']) }}' )"
                                     class="btn btn-danger">{{ trans('app.delete')}}</button>
                         </td>

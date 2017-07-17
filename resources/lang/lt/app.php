@@ -11,7 +11,7 @@ return [
     'no_data' => 'Duomenų nėra',
     'name' => 'Pavadinimas',
     'back'=> 'Atgal',
-    'edit' => 'Atnaujinti',
+    'edit' => 'Keisti',
     'delete' => 'Trinti',
     'show' => 'Rodyti',
 

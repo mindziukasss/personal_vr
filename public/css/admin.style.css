@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     background-color: #ffeecc;
 }
+
 #menu {
     background-color: #222D32;
     width: 230px;
@@ -47,14 +48,27 @@ li {
     background-color: #222D32;
 }
 
-
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-nav > li > a {
     color: #b8c7ce;
-    }
+}
 
-
-.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
     color: #b8c7ce;
     background-color: transparent;
     text-decoration: underline;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    margin: 30px 15px 0px -1px;
+
+}
+.table th {
+    border-top: none !important;
+}
+
+#center {
+    text-align: center;
 }
