@@ -65,7 +65,7 @@ return [
     'virtual_room' => 'Vr patirtis',
     'time' => 'Laikas',
 
-    'delete image' => 'Trinti nuotrauką',
+    'delete title image' => 'Trinti titulinį paveikslėlį',
     'is_active' => 'Kalbų valdymas',
     'new_window' => 'At.naujame lange',
     'translation' => 'Vertimas',

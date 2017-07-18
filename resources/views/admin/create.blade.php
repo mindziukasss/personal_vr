@@ -1,118 +1,134 @@
 @extends('admin.core')
 @section('content')
-    <h2>{{trans('app.new_record')}}{{$titleForm}}</h2>
+    <h1>{{trans('app.new_record')}}{{$titleForm}}</h1>
+    <div class="container">
+        <form class="form-horizontal">
+            {!! Form::open(['url' => $route,'files' => true]) !!}
+            @foreach($fields as $field)
+                @if(!($field['type'] == 'check_box'))
 
-    {!! Form::open(['url' => $route,'files' => true]) !!}
-    @foreach($fields as $field)
-        @if(!($field['type'] == 'check_box'))
-            {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
-        @endif
+                    <label class="col-sm-3 control-label">
+                        {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
+                    </label>
+                @endif
 
-        @if($field['type'] == 'drop_down')
-            @if(isset($record[$field['key']]))
-                @if(in_array($field['key'],['language_code','category_id', 'status', 'time', 'virtual_room']))
+                @if($field['type'] == 'drop_down')
+                    @if(isset($record[$field['key']]))
+                        @if(in_array($field['key'],['language_code','category_id', 'status', 'time', 'virtual_room']))
+                            <div class="form-group">
+                                {{Form::select($field['key'],$field['options'], $record[$field['key']])}}
+                            </div>
+                        @else
+                            <div class="form-group">
+                                {{Form::select($field['key'],$field['options'], $record[$field['key']], ['placeholder' => '']) }}
+                            </div>
+                        @endif
+
+                    @else
+
+                        @if(in_array($field['key'],['language_code','category_id', 'status', 'time', 'virtual_room']))
+                            <div class="form-group">
+                                {{Form::select($field['key'],$field['options'])}}
+                            </div>
+                        @else
+                            <div class="form-group">
+                                {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
+                            </div>
+                        @endif
+
+                    @endif
+
+
+                @elseif($field['type'] == 'single_line')
+                    @if(isset ($record[$field['key']]))
+                        <div class="form-group">
+                            {{ Form::text($field['key'],$record[$field['key']])}}
+                        </div>
+                    @else
+                        <div class="form-group">
+                            {{ Form::text($field['key'])}}
+                        </div>
+                    @endif
+
+                @elseif($field['type'] == 'textarea')
+                    @if(isset ($record[$field['key']]))
+                        <div class="form-group">
+                            {{ Form::textarea($field['key'],$record[$field['key']],['rows' => $field['rows'], 'columns' => $field['columns'], ])}}
+                        </div>
+                    @else
+                        <div class="form-group">
+                            {{ Form::textarea($field['key'],null,['rows' => $field['rows'], 'columns' => $field['columns'] , 'class' => 'form_textarea'])}}
+                        </div>
+                    @endif
+
+                @elseif($field['type'] == 'check_box')
+                    @if(isset($record[$field['key']]))
+                        @foreach($field['options'] as $option)
+                            <div class="form-group">
+                                <label class="col-sm-9 col-sm-offset-1">
+                                    {{Form::label($option['title'])}}
+                                    {{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}
+                                </label>
+                            </div>
+                        @endforeach
+                    @else
+                        @foreach($field['options'] as $option)
+                            <div class="form-group">
+                                <label class="col-sm-9 col-sm-offset-1">
+                                    {{Form::label($option['title'])}}
+                                    {{Form::checkbox($option['name'],$option['value'])}}
+                                </label>
+                            </div>
+                        @endforeach
+                    @endif
+
+                @elseif($field['type'] == 'file')
+                    @if(isset($record[$field['key']]))
+                        <div class="form-group">
+                            <td><img src="{{$record['path']}}" height="60" width="90"></td>
+                            {{Form::file('file'),$record[$field['key']]}}
+                        </div>
+                    @else
+                        <div class="form-group">
+                            {{Form::file('file')}}
+                        </div>
+                    @endif
+
+                @elseif($field['type'] == 'user_down')
+                    @if(isset($record[$field['key']]))
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-3 control-label">
+                                {{ Form::label($user_email['email']) }}
+                            </label>
+                        </div>
+                    @else
+                        <div class="form-group">
+                            {{Form::select($field['key'],$field['options'])}}
+                        </div>
+
+                    @endif
+
+                @elseif($field['type'] == 'reservations')
                     <div class="form-group">
-                        {{Form::select($field['key'],$field['options'], $record[$field['key']])}}
-                    </div>
-                @else
-                    <div class="form-group">
-                        {{Form::select($field['key'],$field['options'], $record[$field['key']], ['placeholder' => '']) }}
+                        <div id="reservations"></div>
+                        <div id="reservations-invisible" style="display: none;"></div>
                     </div>
                 @endif
 
-            @else
-
-                @if(in_array($field['key'],['language_code','category_id', 'status', 'time', 'virtual_room']))
-                    <div class="form-group">
-                        {{Form::select($field['key'],$field['options'])}}
-                    </div>
-                @else
-                    <div class="form-group">
-                        {{Form::select($field['key'],$field['options'], null, ['placeholder' => ''] ) }}
-                    </div>
-                @endif
-
-            @endif
 
 
-        @elseif($field['type'] == 'single_line')
-            @if(isset ($record[$field['key']]))
-                <div class="form-group">
-                    {{ Form::text($field['key'],$record[$field['key']])}}
+            @endforeach
+            <div class="form-group">
+                <div class="col-sm-5 col-sm-offset-3">
+                    <a class="btn btn-primary" href="{{route($back)}}">{{ trans('app.back') }}</a>
+
+                    {{Form::submit(trans('app.save'), ['class' => 'btn btn-success-2']) }}
+
+                    {!!Form::close()!!}
                 </div>
-            @else
-                <div class="form-group">
-                    {{ Form::text($field['key'])}}
-                </div>
-            @endif
-
-        @elseif($field['type'] == 'textarea')
-            @if(isset ($record[$field['key']]))
-                <div class="form-group">
-                    {{ Form::textarea($field['key'],$record[$field['key']],['rows' => $field['rows'], 'columns' => $field['columns'], ])}}
-                </div>
-            @else
-                <div class="form-group">
-                    {{ Form::textarea($field['key'],null,['rows' => $field['rows'], 'columns' => $field['columns'] , 'class' => 'form_textarea'])}}
-                </div>
-            @endif
-
-
-        @elseif($field['type'] == 'check_box')
-            @if(isset($record[$field['key']]))
-                @foreach($field['options'] as $option)
-                    <div class="form-group">
-                        {{Form::label($option['title'])}}
-                        {{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}
-                    </div>
-                @endforeach
-            @else
-                @foreach($field['options'] as $option)
-                    <div class="form-group">
-                        {{Form::label($option['title'])}}
-                        {{Form::checkbox($option['name'],$option['value'])}}
-                    </div>
-                @endforeach
-            @endif
-
-        @elseif($field['type'] == 'file')
-            @if(isset($record[$field['key']]))
-                <div class="form-group">
-                    <td><img src="{{$record['path']}}" height="60" width="90"></td>
-                    {{Form::file('file'),$record[$field['key']]}}
-                </div>
-            @else
-                <div class="form-group">
-                    {{Form::file('file')}}
-                </div>
-            @endif
-
-        @elseif($field['type'] == 'user_down')
-            @if(isset($record[$field['key']]))
-                <div class="form-group">
-                    {{ Form::label($user_email['email']) }}
-                </div>
-            @else
-                <div class="form-group">
-                    {{Form::select($field['key'],$field['options'])}}
-                </div>
-
-            @endif
-
-        @elseif($field['type'] == 'reservations')
-            <div id="reservations"></div>
-            <div id="reservations-invisible" style="display: none;"></div>
-        @endif
-
-
-
-    @endforeach
-
-    <a class="btn btn-primary" href="{{route($back)}}">{{ trans('app.back') }}</a>
-
-    {{Form::submit(trans('app.save'), array('class' => 'btn btn-success')) }}
-
-    {!!Form::close()!!}
+            </div>
+        </form>
+    </div>
 @endsection
 @section('scripts')
     <script>
