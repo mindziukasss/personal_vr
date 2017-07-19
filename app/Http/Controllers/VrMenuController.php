@@ -173,10 +173,10 @@ class VrMenuController extends Controller
             "options" => VrMenuTranslations::where('language_code', $lang)
                 ->pluck('name','record_id')
         ];
-
+        
         $config['fields'][] = [
             "type" => "check_box",
-           "key" => "new_window",
+            "key" => "new_window",
             "options" => [
                 [
                     "name" => "new_window",

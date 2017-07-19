@@ -28,7 +28,7 @@ return [
     'newRecord' => 'Sukurk naują įrašą',
     'language_code' => 'Kalbos',
     'save' => 'Išsaugoti',
-    'new_record' => 'Sukurk įrašą į',
+    'new_record' => 'Sukurk įrašą į ',
 
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',

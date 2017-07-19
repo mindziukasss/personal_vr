@@ -2,12 +2,12 @@
 @section('content')
     <h1>{{trans('app.new_record')}}{{$titleForm}}</h1>
     <div class="container">
-        <form class="form-horizontal">
+        <div class="horizontal">
             {!! Form::open(['url' => $route,'files' => true]) !!}
             @foreach($fields as $field)
                 @if(!($field['type'] == 'check_box'))
 
-                    <label class="col-sm-3 control-label">
+                    <label class="control-label col-sm-2" for=
                         {{ Form::label($field['key'], trans('app.' . $field['key'])) }}
                     </label>
                 @endif
@@ -65,19 +65,19 @@
                     @if(isset($record[$field['key']]))
                         @foreach($field['options'] as $option)
                             <div class="form-group">
-                                <label class="col-sm-9 col-sm-offset-1">
-                                    {{Form::label($option['title'])}}
-                                    {{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}
-                                </label>
+                                {{--<label class="col-sm-9 col-sm-offset-1">--}}
+                                {{Form::label($option['title'])}}
+                                {{Form::checkbox($option['name'],$option['value'], $record[$field['key']])}}
+                                {{--</label>--}}
                             </div>
                         @endforeach
                     @else
                         @foreach($field['options'] as $option)
                             <div class="form-group">
-                                <label class="col-sm-9 col-sm-offset-1">
-                                    {{Form::label($option['title'])}}
-                                    {{Form::checkbox($option['name'],$option['value'])}}
-                                </label>
+                                {{--<label class="col-sm-9 col-sm-offset-1">--}}
+                                {{Form::label($option['title'])}}
+                                {{Form::checkbox($option['name'],$option['value'])}}
+                                {{--</label>--}}
                             </div>
                         @endforeach
                     @endif
@@ -94,40 +94,23 @@
                         </div>
                     @endif
 
-                @elseif($field['type'] == 'user_down')
-                    @if(isset($record[$field['key']]))
-                        <div class="form-group">
-                            <label for="firstName" class="col-sm-3 control-label">
-                                {{ Form::label($user_email['email']) }}
-                            </label>
-                        </div>
-                    @else
-                        <div class="form-group">
-                            {{Form::select($field['key'],$field['options'])}}
-                        </div>
-
-                    @endif
-
                 @elseif($field['type'] == 'reservations')
                     <div class="form-group">
                         <div id="reservations"></div>
                         <div id="reservations-invisible" style="display: none;"></div>
                     </div>
                 @endif
-
-
-
             @endforeach
-            <div class="form-group">
-                <div class="col-sm-5 col-sm-offset-3">
-                    <a class="btn btn-primary" href="{{route($back)}}">{{ trans('app.back') }}</a>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-5 col-sm-offset-3">
+            <a class="btn btn-primary" href="{{route($back)}}">{{ trans('app.back') }}</a>
 
-                    {{Form::submit(trans('app.save'), ['class' => 'btn btn-success-2']) }}
+            {{Form::submit(trans('app.save'), ['class' => 'btn btn-success-2']) }}
 
-                    {!!Form::close()!!}
-                </div>
-            </div>
-        </form>
+            {!!Form::close()!!}
+        </div>
     </div>
 @endsection
 @section('scripts')

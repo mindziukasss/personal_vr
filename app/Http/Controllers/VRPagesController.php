@@ -238,13 +238,6 @@ class VRPagesController extends Controller
         ];
 
         $config['fields'][] = [
-            "type" => "drop_down",
-            "key" => "cover_id",
-            "options" => VRResources::pluck('path', 'id')->toArray()
-
-        ];
-
-        $config['fields'][] = [
             "type" => "check_box",
             "key" => "delete",
             "options" => [[
@@ -254,6 +247,13 @@ class VRPagesController extends Controller
 
             ]]
         ];
+        $config['fields'][] = [
+            "type" => "drop_down",
+            "key" => "cover_id",
+            "options" => VRResources::pluck('path', 'id')->toArray()
+
+        ];
+
 
 
 //        $config['fields'][] = [
