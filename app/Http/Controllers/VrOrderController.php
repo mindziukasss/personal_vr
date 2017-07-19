@@ -88,11 +88,10 @@ class VrOrderController extends Controller {
         $record = VrOrder::find($id)->toArray();
         $config = $this->getFormData();
         $config['record'] = $record;
-        $config['user_email'] = VRUsers::find(VrOrder::find($id)->user_id)->toArray();
-        $config['titleForm'] = $id;
+        $user = VRUsers::find(VrOrder::find($id)->user_id)->toArray();
+        $config['titleForm'] = $user['email'];
         $config['route'] = route('app.orders.edit', $id);
         $config['back'] = 'app.orders.index';
-
         return view('admin.create',$config);
 	}
 
@@ -132,7 +131,6 @@ class VrOrderController extends Controller {
     public function reserv() {
 
         $data = request()->all();
-//        dd($data);
         $time_start =  Carbon::parse($data['time'])->startOfDay();
         $time_end = Carbon::parse($data['time'])->endOfDay();
         return VrReservations::where('experience_id',$data['experience_id'])
@@ -175,13 +173,6 @@ class VrOrderController extends Controller {
             "options" => $this->getVRroomsWithcategory()
         ];
 
-
-        $config['fields'][] = [
-            "type" => "user_down",
-            "key" => "user_id",
-            "options" => VrUsers::pluck('email', 'id')->toArray()
-
-        ];
 
         $config['fields'][] = [
             "type" => "drop_down",
