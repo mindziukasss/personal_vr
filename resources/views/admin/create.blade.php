@@ -1,6 +1,11 @@
 @extends('admin.core')
 @section('content')
-    <h1>{{trans('app.new_record')}}{{$titleForm}}</h1>
+    {{--{{dd($route)}}--}}
+    @if(isset($record['id']))
+        <h1>{{trans('app.edit_record')}}{{$titleForm}}</h1>
+    @else
+        <h1>{{trans('app.new_record')}}{{$titleForm}}</h1>
+    @endif
     <div class="container">
         <div class="horizontal">
             {!! Form::open(['url' => $route,'files' => true]) !!}

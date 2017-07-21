@@ -29,7 +29,7 @@ return [
     'language_code' => 'Kalbos',
     'save' => 'Išsaugoti',
     'new_record' => 'Sukurk įrašą į ',
-
+    'edit_record' =>'Keisk įraša ',
     'adminCategoriesForm' => ' kategorijų sąrašą',
     'adminMenuForm' => ' menių sąrašą',
     'adminPagesForm' => ' puslapių sąrašą',
