@@ -128,7 +128,7 @@ class VRPagesController extends Controller
 
         $config['record'] = $record;
 
-        $config['titleForm'] = $id;
+        $config['titleForm'] = $record['title'];
         $config['route'] = route('app.pages.edit', $id);
         $config['back'] = 'app.pages.index';
 

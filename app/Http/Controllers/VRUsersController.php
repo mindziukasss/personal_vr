@@ -92,7 +92,7 @@ class VrUsersController extends Controller
         $config = $this->getFormData();
         $config['record'] = $record;
 
-        $config['titleForm'] = $id;
+        $config['titleForm'] = $record['name'];
         $config['route'] = route('app.users.edit', $id);
         $config['back'] = 'app.users.index';
 

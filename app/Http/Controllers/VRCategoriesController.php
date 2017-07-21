@@ -99,7 +99,7 @@ class VrCategoriesController extends Controller
         $config = $this->getFormData();
         $config['record'] = $record;
 
-        $config['titleForm'] = $id;
+        $config['titleForm'] =$record['name'];
         $config['route'] = route('app.categories.edit', $id);
         $config['back'] = 'app.categories.index';
         return view('admin.create', $config);

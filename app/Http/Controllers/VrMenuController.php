@@ -92,15 +92,11 @@ class VrMenuController extends Controller
         $record['url'] = $record['translation']['url'];
         $record['name'] = $record['translation']['name'];
         $record['language_code'] = $record['translation']['language_code'];
-
         $config = $this->getFormData();
-
         $config['record'] = $record;
-
-        $config['titleForm'] = $id;
+        $config['titleForm'] = $record['name'];
         $config['route'] = route('app.menu.edit', $id);
         $config['back'] = 'app.menu.index';
-
         return view('admin.create',$config);
     }
 
