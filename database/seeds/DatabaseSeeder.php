@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VrLanguageCodesSeeder::class);
         $this->call(VrCategoriesSeeder::class);
         $this->call(VrMenuSeeder::class);
+        $this->call(VrPagesSeeder::class);
 
     }
 }
