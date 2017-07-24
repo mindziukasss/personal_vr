@@ -1,6 +1,5 @@
 @extends('admin.core')
 @section('content')
-    {{--{{dd($route)}}--}}
     @if(isset($record['id']))
         <h1>{{trans('app.edit_record')}}{{$titleForm}}</h1>
     @else
