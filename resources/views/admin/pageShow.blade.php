@@ -37,7 +37,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         function deleteItem(route) {
             $.ajax({
                 url: route,

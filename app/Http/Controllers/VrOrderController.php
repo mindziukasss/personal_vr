@@ -184,6 +184,12 @@ class VrOrderController extends Controller {
             ]
         ];
 
+        $config['fields'][]= [
+            "type" => "user_down",
+            "key" => "user_id",
+            "options" => VrUsers::pluck('email', 'id')->toArray()
+        ];
+
         $config['fields'][] = [
             "type" => "reservations",
             "key" => "reservations",
