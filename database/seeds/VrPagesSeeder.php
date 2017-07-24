@@ -51,7 +51,7 @@ class VrPagesSeeder extends Seeder
                     "Tavo pilį puolą žvėriški barbarai, o tu turi tik lanką, kad juos sustabdytum",
                 "description_long" =>
                     "Tačiau tai viskas ko reikia tokiam patyrusiam kariui kaip tu - apsaugok savo pilį nuo priešų.",
-                "slug" => "/labaratoryja"
+                "slug" => "labaratoryja"
             ],
             ["record_id" => "samsung_irk",
                 "language_code" => "lt",
@@ -60,7 +60,7 @@ class VrPagesSeeder extends Seeder
                     "Išbandyk savo jėgas irkluodamas",
                 "description_long" =>
                     "Trakų ežere su Rio olimpiados vicečempionu Saulium Riteriu.",
-                "slug" => "/samsung_irklavimas"
+                "slug" => "samsung_irklavimas"
             ],
             ["record_id" => "fruit_ninja",
                 "language_code" => "lt",
@@ -70,7 +70,7 @@ class VrPagesSeeder extends Seeder
                 "description_long" =>
                     "Žaidimas persikelia į virtualia realybę su dar daugiau smagumynų.
                      Du kardai, 4 skirtingi režimai, nesuskaičiuojama gausa vaisių. ",
-                "slug" => "/vaisiu_ninze"
+                "slug" => "vaisiu_ninze"
             ],
             ["record_id" => "ktu_par",
                 "language_code" => "lt",
@@ -79,7 +79,7 @@ class VrPagesSeeder extends Seeder
                     "Suvaldyk parasparnį ir nuleisk jį.",
                 "description_long" =>
                     "Ant KTU pastato nesugadindamas. Daugiau lankų surinksi pakeliui - daugiau taškų pelnysi.",
-                "slug" => "/ktu_parasparnis"
+                "slug" => "ktu_parasparnis"
             ],
             ["record_id" => "space_pirate_trainer",
                 "language_code" => "lt",
@@ -88,7 +88,7 @@ class VrPagesSeeder extends Seeder
                     "Tai puiki proga išpildyti vaikystės svajonę.",
                 "description_long" =>
                     "Būti kosmoso piratu. Čia išmoksi visko ko tau reikės. Paimk skydą, nutaikyk ginklą ir pirmyn!",
-                "slug" => "/kosmoso_piratai"
+                "slug" => "kosmoso_piratai"
             ],
             ["record_id" => "hurl",
                 "language_code" => "lt",
@@ -98,7 +98,7 @@ class VrPagesSeeder extends Seeder
                 "description_long" =>
                     " Kol kas tai galvosūkių žaidimas, kuriame visos kliūtys įveikiamos tiesiog mėtant kamuolį.
                      Tiesa, prieš pasiekdamas lanką, kamuolys turi atsitrenkti į tam tikrą kiekį platformų. ",
-                "slug" => "/svaidymas_kamuolio"
+                "slug" => "svaidymas_kamuolio"
             ],
             ["record_id" => "tilt_brush",
                 "language_code" => "lt",
@@ -107,7 +107,7 @@ class VrPagesSeeder extends Seeder
                     "Išbandyk savo piešimo įgūdžius 3D erdvėje!",
                 "description_long" =>
                     "Nupiešk paveikslą ar žmogų, sukurk parką ar pastatyk namą. Ribų nėra! Išlaisvink kūrybikšumą!",
-                "slug" => "/piesimas"
+                "slug" => "piesimas"
             ],
             ["record_id" => "football_simulator",
                 "language_code" => "lt",
@@ -116,7 +116,7 @@ class VrPagesSeeder extends Seeder
                     "Tapk vartininku!",
                 "description_long" =>
                     "Įlipk į vartininko kailį ir atalikyk pačius sudėtingiausius smūgius į tavo vartus.",
-                "slug" => "/vartininkas"
+                "slug" => "vartininkas"
             ],
             ["record_id" => "merry_snowballs",
                 "language_code" => "lt",
@@ -127,7 +127,7 @@ class VrPagesSeeder extends Seeder
                     "Ir pasinerk į nepakartojamą sniego karą.
                      Apsisaugok nuo kitų gniūščių su šušklių dėžės dangčiu arba pasislėpdamas už tvoros.
                       O sniego šautuvas padės įrodyti kad esi kiečiausias vaikas kieme.",
-                "slug" => "/gniuztes"
+                "slug" => "gniuztes"
             ],
             ["record_id" => "project_cars",
                 "language_code" => "lt",
@@ -136,7 +136,7 @@ class VrPagesSeeder extends Seeder
                     "Atsisėk prie automobilio vairo.",
                 "description_long" =>
                     "Ir parodyk kad esi geriausias vairuotojas mieste. Vingiuoti posūkiai ir aršūs oponentai jau laukia tavęs!",
-                "slug" => "/lenktyninkas"
+                "slug" => "lenktyninkas"
             ],
 
         ];
