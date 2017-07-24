@@ -97,7 +97,7 @@
                         <td align="center">
                             {!! Form::open(['route' => ['app.resources.create', $record['id']], 'files' => true]) !!}
                             <input type="file" multiple onchange="this.form.submit()" name="files[]" hidden
-                                   class="btn btn-primary btn-sm btn-file">
+                                   class="btn btn-primary btn-sm btn-file" style="width: 270px">
                             {!! Form::close() !!}
                         </td>
                     @endif
